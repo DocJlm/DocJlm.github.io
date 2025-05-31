@@ -47,7 +47,7 @@ function _createClass(e, r, t) {
 
 // 配置项
 var config = {
-  src: "/img/rcyd.jpg",
+  src: "/img/rcyd.png",
   rows: 15,
   cols: 7
 };
