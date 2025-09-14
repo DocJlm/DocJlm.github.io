@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.zqcblog.com/posts/428b39ea.html</loc>
+    
+    <lastmod>2025-09-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.zqcblog.com/posts/956e041d.html</loc>
     
     <lastmod>2025-06-27</lastmod>
@@ -40,7 +49,7 @@
 
   <url>
     <loc>https://www.zqcblog.com/</loc>
-    <lastmod>2025-06-27</lastmod>
+    <lastmod>2025-09-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
