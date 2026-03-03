@@ -1,12 +1,12 @@
 /* @font-face {
   font-family: Candyhome;
-  src: url(https://npm.elemecdn.com/anzhiyu-blog@1.1.6/fonts/Candyhome.ttf);
+  src: url(https://cdn.jsdelivr.net/npm/anzhiyu-blog@1.1.6/fonts/Candyhome.ttf);
   font-display: swap;
   font-weight: lighter;
 } */
 @font-face {
     font-family: ZhuZiAYuanJWD;
-    src: url(https://npm.elemecdn.com/anzhiyu-blog@1.1.6/fonts/ZhuZiAWan.woff2);
+    src: url(https://cdn.jsdelivr.net/npm/anzhiyu-blog@1.1.6/fonts/ZhuZiAWan.woff2);
     font-display: swap;
     font-weight: lighter;
   }
@@ -92,9 +92,9 @@
     height: 1.5em;
   }
   
-  /*top-img黑色透明玻璃效果移除，不建议加，除非你执着于完全一图流或者背景图对比色明显 */
+  /*top-img半透明遮罩，保证标题文字可读性 */
   #page-header:not(.not-top-img):before {
-    background-color: transparent !important;
+    background-color: rgba(0, 0, 0, 0.3) !important;
   }
   
   /* 首页文章卡片 */
@@ -159,10 +159,6 @@
   
   [data-theme="dark"] div#category {
     background: #121212 !important;
-  }
-  
-  [data-theme="dark"] div#category {
-    background: transparent !important;
   }
   /* 页脚透明 */
   #footer {

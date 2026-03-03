@@ -1,0 +1,427 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考 | 破茧者~BLOG</title><meta name="author" content="DocJlm"><meta name="copyright" content="DocJlm"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考“I always thought I loved programming. Turns out, what I really loved was creating.”  这个男人到底什么来头前两天刷到了 Lex Fridman 播客第 491 期，嘉宾是 Peter Steinberger。说实话，如果你是做移动端开">
+<meta property="og:type" content="article">
+<meta property="og:title" content="当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考">
+<meta property="og:url" content="https://www.zqcblog.com/posts/peter2026.html">
+<meta property="og:site_name" content="破茧者~BLOG">
+<meta property="og:description" content="当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考“I always thought I loved programming. Turns out, what I really loved was creating.”  这个男人到底什么来头前两天刷到了 Lex Fridman 播客第 491 期，嘉宾是 Peter Steinberger。说实话，如果你是做移动端开">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.zqcblog.com/img/peter-interview.jpg">
+<meta property="article:published_time" content="2026-03-03T02:00:00.000Z">
+<meta property="article:modified_time" content="2026-03-03T09:24:40.914Z">
+<meta property="article:author" content="DocJlm">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="编程">
+<meta property="article:tag" content="Agentic Engineering">
+<meta property="article:tag" content="OpenClaw">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.zqcblog.com/img/peter-interview.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考",
+  "url": "https://www.zqcblog.com/posts/peter2026.html",
+  "image": "https://www.zqcblog.com/img/peter-interview.jpg",
+  "datePublished": "2026-03-03T02:00:00.000Z",
+  "dateModified": "2026-03-03T09:24:40.914Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "DocJlm",
+      "url": "https://www.zqcblog.com/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://www.zqcblog.com/posts/peter2026.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="codeva-3h400Ia68Y"/><link rel="manifest" href="/manifest.json"/><meta name="msapplication-TileColor" content="#3b70fc"/><link rel="apple-touch-icon" sizes="180x180" href="/img/siteicon/128.png"/><link rel="icon" type="image/png" sizes="32x32" href="/img/siteicon/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/img/siteicon/16.png"/><link rel="mask-icon" href="/img/siteicon/128.png" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/anzhiyu-blog@2.0.4/css/runtime/runtime.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='screen'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper-anzhiyu@1.0.4/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper-anzhiyu@1.0.4/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="破茧者~BLOG" type="application/atom+xml">
+</head><body><div id="web_bg" style="background-image: url(/img/bg.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/tlxy.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw fas fa-home faa-tada"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw fas fa-archive faa-tada"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw fas fa-folder-open faa-tada"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw fas fa-envelope faa-tada"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/bangumis/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili1"></use></svg><span> 追番</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-zhifeiji"></use></svg><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/peter-interview.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">破茧者~BLOG</span></a><a class="nav-page-title" href="/"><span class="site-name">当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw fas fa-home faa-tada"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw fas fa-archive faa-tada"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw fas fa-folder-open faa-tada"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw fas fa-envelope faa-tada"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/bangumis/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili1"></use></svg><span> 追番</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-zhifeiji"></use></svg><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-03-03T02:00:00.000Z" title="发表于 2026-03-03 10:00:00">2026-03-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-03-03T09:24:40.914Z" title="更新于 2026-03-03 17:24:40">2026-03-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="当程序员不再写代码——看完-Peter-Steinberger-采访后的技术思考"><a href="#当程序员不再写代码——看完-Peter-Steinberger-采访后的技术思考" class="headerlink" title="当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考"></a>当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考</h1><div class="note primary simple"><p>“I always thought I loved programming. Turns out, what I really loved was creating.”</p>
+</div>
+<h2 id="这个男人到底什么来头"><a href="#这个男人到底什么来头" class="headerlink" title="这个男人到底什么来头"></a>这个男人到底什么来头</h2><p>前两天刷到了 Lex Fridman 播客第 491 期，嘉宾是 Peter Steinberger。说实话，如果你是做移动端开发的，PSPDFKit 这个名字你多少应该听过——十亿级别的装机量，做 PDF SDK 做到了行业天花板。这哥们花了 13 年时间把 PSPDFKit 做大，然后把公司卖了，退休了，消失了三年。</p>
+<p>一般人到这儿故事就该结束了对吧？有钱有闲，环游世界，写写回忆录，完美收官。但 Peter 不是一般人。退休三年之后他说自己快无聊死了——“如果你每天早上醒来没有什么值得期待的事情，没有真正的挑战，那会非常非常无聊”。然后他搞了 OpenClaw，一个开源 AI Agent 项目，直接成了 GitHub 历史上增长最快的项目之一，目前251K Star(top1)，全世界都在讨论。</p>
+<p>所以这期播客值得听，不只是因为 Peter 本身的传奇经历，更是因为他对 AI 时代软件开发的理解，真的跟大多数人不一样。他不是在纸上谈兵，他是真刀真枪地用 Agent 写生产代码，服务真实用户的人。</p>
+<h2 id="让-Agent-自己调试自己"><a href="#让-Agent-自己调试自己" class="headerlink" title="让 Agent 自己调试自己"></a>让 Agent 自己调试自己</h2><p>整个采访里最让我上头的一个点，是 Peter 谈到他怎么调试 Agent 的 bug。</p>
+<p>一般vibe时代前我们遇到 bug 是怎么做的？翻日志、打断点、读堆栈、加 print 语句，一层一层地排查。但vibe时代后的做法完全不一样，我们会直接问 Agent：<strong>“你看到了什么错误？去读源代码，找出问题在哪。”</strong> 但是更绝的是Peter会反问：<strong>“你能不能自己调用这个工具？”</strong></p>
+<p>这其实是一个非常反直觉的思路。我们习惯了把 Agent 当成一个执行指令的工具，但 Peter 是让 Agent 去理解自己的运行机制。他说了一句话让我印象很深：<strong>“I made the agent very aware — it knows what its source code is. It understands how it sits and runs in its own harness.”</strong> 他让 Agent 读自己的源码，理解自己是怎么被组装起来的，然后用这个认知去定位问题。</p>
+<p>这东西说白了就是 Self-Modifying Software 的雏形。Peter 自己也说：”People talk about self-modifying software, I just built it.”</p>
+<p>更深一层说，Peter 还提到了一个我觉得特别重要的理念：<strong>和 Agent 共情</strong>—<strong>换位思考</strong>。他说你得考虑 Agent 是怎么看你的代码库的——“它每次开始一个新会话，对你的项目一无所知，你得帮它建立上下文。” 这话听起来简单，但做到真的要转变思维方式。我们习惯了以自己的认知为中心来组织代码，但如果你的协作者是一个每次从零开始的 Agent，你就得重新思考代码结构、文档方式、甚至项目的文件命名。Peter 的原话是：”I’m not building the code base to be perfect for me — I want to build a code base that is very easy for an agent to navigate.” 这话要是放到两年前说出来，估计会被人骂疯了。但现在想想，确实有道理。</p>
+<h2 id="Agentic-Engineering：不是-Vibe-Coding"><a href="#Agentic-Engineering：不是-Vibe-Coding" class="headerlink" title="Agentic Engineering：不是 Vibe Coding"></a>Agentic Engineering：不是 Vibe Coding</h2><p>Peter 在采访中用了一个我很喜欢的说法来区分两种工作模式。他说：”I do agentic engineering, and then maybe after 3:00 AM, I switch to vibe coding, and then I have regrets on the next day.” 哈哈，凌晨三点以后做的决定谁没后悔过呢。</p>
+<p>但玩笑归玩笑，Agentic Engineering 和 Vibe Coding 的区别是实质性的。Vibe Coding 是你大概给个方向，然后看着 Agent 去发挥，你凭感觉决定接不接受结果。而 Agentic Engineering 是你真正理解 Context Window 的限制、知道怎么给 Agent 搭建脚手架、怎么切分任务让多个 Agent 并行高效工作。</p>
+<p>Peter 的实际工作流是这样的：他同时跑 4 到 10 个 Agent，用一个 3x3 的终端网格来管理它们，大部分 Agent 在同一个文件夹里工作。他很多指令是用语音输入的（用 Wispr Flow），甚至说他”至少 50% 的 prompt 都包含一张截图”。这就不是在 coding 了，这是在指挥。</p>
+<p>他还提到了一个”复杂度曲线”的概念：最开始你用 AI 写代码，prompt 很简单——“帮我修一下这个 bug”。然后你开始搞复杂的编排，多 Agent 协作、工具调用、流程控制。但最终，当你真正掌握了这套东西之后，你会回到短 prompt——因为你已经把代码库、文档、工具链都调教到了 Agent 能一听就懂的程度。这个否定之否定的过程挺有意思的。</p>
+<p>至于代码审查，Peter 的做法也和传统不一样。他不是自己逐行 review，而是先问 Agent：”你理解这个 PR 要做什么吗？” 确认 Agent 理解了意图之后，再问：”有没有更优的方案？” 然后让 Agent 自己回应 CI bot 的评论，通过了就自动合并。他还搞了 <code>/automerge</code> 和 <code>/massageprs</code> 这种自定义命令来批量管理 PR。这效率，说实话有点恐怖。</p>
+<h2 id="Skills-和-CLI-才是正道，MCP-靠边站"><a href="#Skills-和-CLI-才是正道，MCP-靠边站" class="headerlink" title="Skills 和 CLI 才是正道，MCP 靠边站"></a>Skills 和 CLI 才是正道，MCP 靠边站</h2><p>Peter 在采访中对 MCP 的态度可以说是毫不客气。他的原话是：<strong>“Almost all MCPs really should be CLIs. I say that as someone who wrote 5 MCPs myself.”</strong> 作为一个自己写过 MCP 的人来说这话，分量很重。</p>
+<p>他总结了 MCP 的几个核心问题。第一是<strong>上下文污染</strong>——MCP 返回的数据会大块大块地塞进 Context Window。他举了个例子，光用 GitHub 的 MCP 就吃掉 23k tokens，最开始甚至接近 50k tokens。这对于寸土寸金的 Context Window 来说简直是灾难。第二是<strong>不支持组合调用</strong>——你没法像 Unix 管道那样把多个 MCP 的输出串联起来处理。第三是<strong>本质上是一套新语法</strong>——模型需要额外的训练才能理解怎么调用 MCP，而 CLI 命令？模型天生就懂。</p>
+<p>相比之下，CLI + jq 管道的优势就太明显了。你可以精准地过滤数据，只让需要的结果进入上下文，不会造成任何污染。模型对 Unix 命令的理解是刻在骨子里的，不需要额外的 prompt 去解释。</p>
+<p>Peter 说的 Skills 本质上就是一句话的功能描述，模型加载后直接就知道该调用什么 CLI 命令。简洁、高效、不浪费上下文。</p>
+<p>当然他也承认 MCP 有一个不可替代的场景：需要维持状态的服务，比如 Playwright 做浏览器自动化，你需要一个持续运行的浏览器实例。但除了这类场景，Peter 的做法是：拿到一个 MCP，第一件事就是花一分钟把它转成 CLI。</p>
+<p>说实话这个观点让我有一种”原来如此”的通透感。Unix 哲学里那句 “Do One Thing and Do It Well”，在 AI 时代不仅没有过时，反而焕发了新生。管道、过滤、组合——这些几十年前的老思想，恰恰是和 AI Agent 协作的最佳范式。</p>
+<h2 id="当编程变成织毛衣"><a href="#当编程变成织毛衣" class="headerlink" title="当编程变成织毛衣"></a>当编程变成织毛衣</h2><p>这部分是整个采访最扎心的地方。</p>
+<p>Peter 说了一个类比：<strong>编程这个技艺本身会一直存在，但会变成像织毛衣一样的东西——大家做这个是因为喜欢，不是因为什么实际用途</strong>。</p>
+<p>你知道我第一次听到这话的时候是什么感受吗？说不上来，一种很复杂的东西。我们这些写代码的人，花了几千个小时沉浸在编辑器里，那种把一个复杂的算法写出来、所有测试通过的瞬间，那种凌晨三点终于把一个诡异的 bug 修好然后瘫在椅子上的成就感，那种在代码里找到心流状态、世界只剩下你和屏幕的感觉——这些东西，真的很难接受会被一个”没灵魂的玩意儿”取代。</p>
+<p>Peter 注意到了很多开发者正在”mourning the loss of the flow state”——哀悼心流状态的失去。他把这比作工业革命时期工人砸蒸汽机的故事。当年的纺织工人觉得机器夺走了他们的手艺、他们的尊严、他们的身份认同。现在这个故事在技术圈重演了，只不过这次被威胁的不是体力劳动者，而是我们这些自诩为脑力劳动者的人。</p>
+<p>但是 Peter 也说了一句很诚实的话——和 Agent 合作的时候，他也能进入类似的心流状态，”I never had so much fun than building this project”。只是那种感觉不一样了。以前的心流是在代码的细节里游泳，现在的心流是在更高的抽象层面做设计、做决策、做创造。</p>
+<p>Peter 说他以前一直以为自己热爱的是编程，后来发现他真正热爱的是创造。这话听着简单吧？但真正对自己诚实地想想，我觉得大部分程序员其实都没有想清楚这个问题。我们究竟是喜欢”写代码”这个动作本身，还是喜欢”通过代码把脑子里的想法变成现实”这个过程？如果是后者，那 Agent 并不是在夺走你的东西，它只是换了一种方式帮你实现。</p>
+<p>他还有一句话我记得很清楚：”不要把你的身份绑定在’程序员’这个标签上，你本质上是一个创造者。” 说实话，我知道这话是对的。但作为一个正在经历这场变革的开发者，真正做到这一点，比说出来难太多了。我的简历上写着”软件工程师”，我的技能树全部点在代码上，我的圈子里聊的都是框架和语言——这些东西突然被人说”不重要了”，你让我怎么轻描淡写地说一句”没关系我是创造者”？</p>
+<p>但我也不得不承认，Peter 确实在身体力行。他真的从一个每天写 Objective-C 的 iOS 开发，变成了一个用语音指挥十个 Agent 同时干活的人。而且他做出来的东西比以前更疯狂、更有影响力。也许这就是答案——不是要放弃什么，而是要升级。</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>两个多小时的播客看完，脑子里其实挺乱的。Peter 说的很多东西，我理性上都认同，但情感上还是需要时间消化。不过有一点我可以确定：这个行业的变化速度，已经快到了你如果不主动去理解新范式，下一次回头看的时候可能就已经被落下了。</p>
+<p>至于编程会不会真的变成织毛衣？我不知道。但我觉得，不管怎样，那些凌晨三点修完 bug 的夜晚，那些和代码较劲的日子，都不会白费。它们构成了我们理解计算的底层直觉，而这个直觉，恰恰是在 Agent 时代做好 Agentic Engineering 的基础。</p>
+<blockquote>
+<p>播客链接：<a target="_blank" rel="noopener" href="https://lexfridman.com/peter-steinberger/">Lex Fridman Podcast #491 - Peter Steinberger</a><br>Peter 的博客：<a target="_blank" rel="noopener" href="https://steipete.me/posts/just-talk-to-it">steipete.me</a></p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.zqcblog.com">DocJlm</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.zqcblog.com/posts/peter2026.html">https://www.zqcblog.com/posts/peter2026.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://www.zqcblog.com" target="_blank">破茧者~BLOG</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/AI/">AI</a><a class="post-meta__tags" href="/tags/%E7%BC%96%E7%A8%8B/">编程</a><a class="post-meta__tags" href="/tags/Agentic-Engineering/">Agentic Engineering</a><a class="post-meta__tags" href="/tags/OpenClaw/">OpenClaw</a></div><div class="post-share"><div class="social-share" data-image="/img/peter-interview.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/posts/cc2026.html" title="程序员如何高效使用 Claude Code"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/claude-code-cover.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">程序员如何高效使用 Claude Code</div></div><div class="info-2"><div class="info-item-1">程序员如何高效使用 Claude CodeClaude Code 是 Anthropic 推出的 CLI 编程助手，能直接在终端中理解你的代码仓库、执行命令、编辑文件、管理 Git——简单说，它就是一个住在你终端里的高级程序员搭档。但和所有强大工具一样，会用和用好之间隔着一道鸿沟。 本文综合了 Claude Code 创始人 Boris Cherny、Vue.js 作者尤雨溪、Google Chrome 工程负责人 Addy Osmani 等大咖的实战经验，以及 Anthropic 黑客松冠军 Affaan Mustafa 的两篇深度指南（The Shorthand Guide 和 The Longform Guide）的精华，以及社区优秀开源项目 everything-claude-code（50K+ Stars）和 awesome-claude-skills（38K+ Stars）的核心内容，帮你从”能用”进阶到”用好”。  一、理解核心约束：200K 上下文窗口在学任何技巧之前，先理解这一点：Claude Code 的 200K token...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/posts/cc2026.html" title="程序员如何高效使用 Claude Code"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/claude-code-cover.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-02</div><div class="info-item-2">程序员如何高效使用 Claude Code</div></div><div class="info-2"><div class="info-item-1">程序员如何高效使用 Claude CodeClaude Code 是 Anthropic 推出的 CLI 编程助手，能直接在终端中理解你的代码仓库、执行命令、编辑文件、管理 Git——简单说，它就是一个住在你终端里的高级程序员搭档。但和所有强大工具一样，会用和用好之间隔着一道鸿沟。 本文综合了 Claude Code 创始人 Boris Cherny、Vue.js 作者尤雨溪、Google Chrome 工程负责人 Addy Osmani 等大咖的实战经验，以及 Anthropic 黑客松冠军 Affaan Mustafa 的两篇深度指南（The Shorthand Guide 和 The Longform Guide）的精华，以及社区优秀开源项目 everything-claude-code（50K+ Stars）和 awesome-claude-skills（38K+ Stars）的核心内容，帮你从”能用”进阶到”用好”。  一、理解核心约束：200K 上下文窗口在学任何技巧之前，先理解这一点：Claude Code 的 200K token...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/tlxy.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">DocJlm</div><div class="author-info-description">The Only Thing You Have to Fear Is Your Own Code</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/DocJlm"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon faa-parent animated-hover" href="https://github.com/DocJlm" target="_blank" title="Github"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-gitHub"></use></svg></a><a class="social-icon faa-parent animated-hover" href="mailto:zqc0914@gmail.com" target="_blank" title="Email"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-youxiang"></use></svg></a><a class="social-icon faa-parent animated-hover" href="/atom.xml" target="_blank" title="RSS"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-rss"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com" target="_blank" title="BiliBili"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://github.com/DocJlm" target="_blank" title="QQ"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-QQ1"></use></svg></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BD%93%E7%A8%8B%E5%BA%8F%E5%91%98%E4%B8%8D%E5%86%8D%E5%86%99%E4%BB%A3%E7%A0%81%E2%80%94%E2%80%94%E7%9C%8B%E5%AE%8C-Peter-Steinberger-%E9%87%87%E8%AE%BF%E5%90%8E%E7%9A%84%E6%8A%80%E6%9C%AF%E6%80%9D%E8%80%83"><span class="toc-number">1.</span> <span class="toc-text">当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%99%E4%B8%AA%E7%94%B7%E4%BA%BA%E5%88%B0%E5%BA%95%E4%BB%80%E4%B9%88%E6%9D%A5%E5%A4%B4"><span class="toc-number">1.1.</span> <span class="toc-text">这个男人到底什么来头</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A9-Agent-%E8%87%AA%E5%B7%B1%E8%B0%83%E8%AF%95%E8%87%AA%E5%B7%B1"><span class="toc-number">1.2.</span> <span class="toc-text">让 Agent 自己调试自己</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Agentic-Engineering%EF%BC%9A%E4%B8%8D%E6%98%AF-Vibe-Coding"><span class="toc-number">1.3.</span> <span class="toc-text">Agentic Engineering：不是 Vibe Coding</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Skills-%E5%92%8C-CLI-%E6%89%8D%E6%98%AF%E6%AD%A3%E9%81%93%EF%BC%8CMCP-%E9%9D%A0%E8%BE%B9%E7%AB%99"><span class="toc-number">1.4.</span> <span class="toc-text">Skills 和 CLI 才是正道，MCP 靠边站</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BD%93%E7%BC%96%E7%A8%8B%E5%8F%98%E6%88%90%E7%BB%87%E6%AF%9B%E8%A1%A3"><span class="toc-number">1.5.</span> <span class="toc-text">当编程变成织毛衣</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="toc-number">1.6.</span> <span class="toc-text">写在最后</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/peter2026.html" title="当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/peter-interview.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考"/></a><div class="content"><a class="title" href="/posts/peter2026.html" title="当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考">当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考</a><time datetime="2026-03-03T02:00:00.000Z" title="发表于 2026-03-03 10:00:00">2026-03-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/cc2026.html" title="程序员如何高效使用 Claude Code"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/claude-code-cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="程序员如何高效使用 Claude Code"/></a><div class="content"><a class="title" href="/posts/cc2026.html" title="程序员如何高效使用 Claude Code">程序员如何高效使用 Claude Code</a><time datetime="2026-03-02T04:00:00.000Z" title="发表于 2026-03-02 12:00:00">2026-03-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/4569329.html" title="Linux应知应会"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/Linux.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux应知应会"/></a><div class="content"><a class="title" href="/posts/4569329.html" title="Linux应知应会">Linux应知应会</a><time datetime="2025-10-15T13:39:54.000Z" title="发表于 2025-10-15 21:39:54">2025-10-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/1e0b46d9.html" title="git团队协作"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/git.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="git团队协作"/></a><div class="content"><a class="title" href="/posts/1e0b46d9.html" title="git团队协作">git团队协作</a><time datetime="2025-09-27T08:33:58.000Z" title="发表于 2025-09-27 16:33:58">2025-09-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/428b39ea.html" title="KMP详解"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/KMP.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="KMP详解"/></a><div class="content"><a class="title" href="/posts/428b39ea.html" title="KMP详解">KMP详解</a><time datetime="2025-09-14T02:52:41.000Z" title="发表于 2025-09-14 10:52:41">2025-09-14</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 - 2026 By DocJlm</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="13771892874" data-server="netease" data-type="playlist"   data-order="list" data-fixed="true" data-preload="auto" data-autoplay="false" data-mutex="true" ></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      const usePjax = true
+      true 
+        ? (usePjax ? pjax.loadUrl('/404.html') : window.location.href = '/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})()</script><div class="app-refresh" id="app-refresh" style="position: fixed;top: -2.2rem;left: 0;right: 0;z-index: 99999;padding: 0 1rem;font-size: 15px;height: 2.2rem;transition: all 0.3s ease;"><div class="app-refresh-wrap" style=" display: flex;color: #fff;height: 100%;align-items: center;justify-content: center;"><label>✨ 有新文章啦！ 👉</label><a href="javascript:void(0)" onclick="location.reload()"><span style="color: #fff;text-decoration: underline;cursor: pointer;">🍗点击食用🍔</span></a></div></div><script>if ('serviceWorker' in navigator) {
+if (navigator.serviceWorker.controller) {
+navigator.serviceWorker.addEventListener('controllerchange', function() {
+showNotification()
+})
+}
+window.addEventListener('load', function() {
+navigator.serviceWorker.register('/sw.js')
+})
+}
+function showNotification() {
+if (GLOBAL_CONFIG.Snackbar) {
+var snackbarBg =
+document.documentElement.getAttribute('data-theme') === 'light' ?
+GLOBAL_CONFIG.Snackbar.bgLight :
+GLOBAL_CONFIG.Snackbar.bgDark
+var snackbarPos = GLOBAL_CONFIG.Snackbar.position
+Snackbar.show({
+text: '✨ 有新文章啦！ 👉',
+backgroundColor: snackbarBg,
+duration: 500000,
+pos: snackbarPos,
+actionText: '🍗点击食用🍔',
+actionTextColor: '#fff',
+onActionClick: function(e) {
+location.reload()
+},
+})
+} else {
+var showBg =
+document.documentElement.getAttribute('data-theme') === 'light' ?
+'#3b70fc' :
+'#1f1f1f'
+var cssText = `top: 0; background: ${showBg};`
+document.getElementById('app-refresh').style.cssText = cssText
+}
+}</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start -->
+  <script data-pjax src="/js/hexo_githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://github-calendar-api.meta-code.top/api?user=DocJlm";
+            var git_color =['#ebedf0', '#a2f7af', '#6ce480', '#54ad63', '#469252', '#31753c', '#1f5f2a', '#13531f', '#084111', '#032b09', '#000000'];
+            var git_user ="DocJlm";
+            var parent_div_git = document.getElementById('recent-posts');
+            var git_div_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/'){
+                console.log("已挂载hexo-github-calendar https://github.com/Barry-Flynn/hexo-github-calendar");
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementById('recent-posts')){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:280px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style></style><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" data-title="主题版本Butterfly_v4.2.2" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" data-title="本站使用JsDelivr为静态资源提供CDN加速" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/runtime/runtime.min.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '30');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('article-sort-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__slideInRight');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="https://cdn.jsdelivr.net/npm/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/hexo-butterfly-wowjs/lib/wow_init.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item swiper_container_card" style="height: auto;width: 100%"><div id="random"><div id="random-banner"><canvas id="peoplecanvas"></canvas></div><a id="random-hover" style="width:100%;height:auto;" href="javascript:toRandomPost()" rel="external nofollow noreferrer" one-link-mark="yes"><i class="fa fa-paper-plane" style="margin-left:10px"></i><div style="margin-left:10px">随便逛逛<i class="fa-solid fa-arrow-right" style="margin-left:10px"></i></div></a></div><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/af5d4fac.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/smhfx.png" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2025-05-31</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/af5d4fac.html&quot;);" href="javascript:void(0);" alt="">碎梦后繁星</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/af5d4fac.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/4569329.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/Linux.png" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2025-10-15</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/4569329.html&quot;);" href="javascript:void(0);" alt="">Linux应知应会</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/4569329.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/1e0b46d9.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/git.png" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2025-09-27</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/1e0b46d9.html&quot;);" href="javascript:void(0);" alt="">git团队协作</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/1e0b46d9.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/peter2026.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/peter-interview.jpg" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2026-03-03</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/peter2026.html&quot;);" href="javascript:void(0);" alt="">当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/peter2026.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/428b39ea.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/KMP.webp" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2025-09-14</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/428b39ea.html&quot;);" href="javascript:void(0);" alt="">KMP详解</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/428b39ea.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/956e041d.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/lkq.jpg" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2025-06-27</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/956e041d.html&quot;);" href="javascript:void(0);" alt="">李克勤院士</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/956e041d.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/cc2026.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/claude-code-cover.png" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2026-03-02</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/cc2026.html&quot;);" href="javascript:void(0);" alt="">程序员如何高效使用 Claude Code</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/cc2026.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://cdn.jsdelivr.net/npm/anzhiyu-blog@1.1.6/js/swiper.min.js"></script><script defer data-pjax src="https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper-anzhiyu@1.0.4/lib/swiper_init.js"></script><script data-pjax src="https://cdn.jsdelivr.net/npm/gsap@3.9.1/dist/gsap.min.js"></script><script defer src="/js/people.min.js"></script><script async src="/anzhiyu/random.js"></script><script async src="/js/ali_font.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body></html>
