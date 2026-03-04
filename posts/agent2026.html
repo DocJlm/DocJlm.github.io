@@ -1,0 +1,545 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>鹅厂九人谈：如何让Agent自动持续进化 | 破茧者~BLOG</title><meta name="author" content="DocJlm"><meta name="copyright" content="DocJlm"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="鹅厂九人谈：如何让Agent自动持续进化“落地一个 Agent 容易，但通过一定机制自动持续优化 Agent 却很难。” —— 一位鹅厂员工的灵魂拷问  前几天读到一篇文章，收录了 9 位鹅厂员工关于「Agent 如何自动持续进化」的讨论。说实话，看完之后我在椅子上坐了好一会儿没动——这些观点里有好几个，精准地戳到了我最近在用 AI 工具时一直隐隐感觉到、但没想明白的东西。 我们这个行业现在有一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="鹅厂九人谈：如何让Agent自动持续进化">
+<meta property="og:url" content="https://www.zqcblog.com/posts/agent2026.html">
+<meta property="og:site_name" content="破茧者~BLOG">
+<meta property="og:description" content="鹅厂九人谈：如何让Agent自动持续进化“落地一个 Agent 容易，但通过一定机制自动持续优化 Agent 却很难。” —— 一位鹅厂员工的灵魂拷问  前几天读到一篇文章，收录了 9 位鹅厂员工关于「Agent 如何自动持续进化」的讨论。说实话，看完之后我在椅子上坐了好一会儿没动——这些观点里有好几个，精准地戳到了我最近在用 AI 工具时一直隐隐感觉到、但没想明白的东西。 我们这个行业现在有一个">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.zqcblog.com/img/agent-evolution-cover.png">
+<meta property="article:published_time" content="2026-03-04T06:00:00.000Z">
+<meta property="article:modified_time" content="2026-03-04T15:53:23.823Z">
+<meta property="article:author" content="DocJlm">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="编程">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="大模型">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.zqcblog.com/img/agent-evolution-cover.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "鹅厂九人谈：如何让Agent自动持续进化",
+  "url": "https://www.zqcblog.com/posts/agent2026.html",
+  "image": "https://www.zqcblog.com/img/agent-evolution-cover.png",
+  "datePublished": "2026-03-04T06:00:00.000Z",
+  "dateModified": "2026-03-04T15:53:23.823Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "DocJlm",
+      "url": "https://www.zqcblog.com/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://www.zqcblog.com/posts/agent2026.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="codeva-3h400Ia68Y"/><link rel="manifest" href="/manifest.json"/><meta name="msapplication-TileColor" content="#3b70fc"/><link rel="apple-touch-icon" sizes="180x180" href="/img/siteicon/128.png"/><link rel="icon" type="image/png" sizes="32x32" href="/img/siteicon/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/img/siteicon/16.png"/><link rel="mask-icon" href="/img/siteicon/128.png" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '鹅厂九人谈：如何让Agent自动持续进化',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/anzhiyu-blog@2.0.4/css/runtime/runtime.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper-anzhiyu@1.0.4/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper-anzhiyu@1.0.4/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='screen'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="破茧者~BLOG" type="application/atom+xml">
+</head><body><div id="web_bg" style="background-image: url(/img/bg.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/tlxy.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw fas fa-home faa-tada"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw fas fa-archive faa-tada"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw fas fa-folder-open faa-tada"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw fas fa-envelope faa-tada"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/bangumis/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili1"></use></svg><span> 追番</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-zhifeiji"></use></svg><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/agent-evolution-cover.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">破茧者~BLOG</span></a><a class="nav-page-title" href="/"><span class="site-name">鹅厂九人谈：如何让Agent自动持续进化</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw fas fa-home faa-tada"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw fas fa-archive faa-tada"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw fas fa-folder-open faa-tada"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw fas fa-envelope faa-tada"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/bangumis/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili1"></use></svg><span> 追番</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-zhifeiji"></use></svg><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">鹅厂九人谈：如何让Agent自动持续进化</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-03-04T06:00:00.000Z" title="发表于 2026-03-04 14:00:00">2026-03-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-03-04T15:53:23.823Z" title="更新于 2026-03-04 23:53:23">2026-03-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">4.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>13分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="鹅厂九人谈：如何让Agent自动持续进化"><a href="#鹅厂九人谈：如何让Agent自动持续进化" class="headerlink" title="鹅厂九人谈：如何让Agent自动持续进化"></a>鹅厂九人谈：如何让Agent自动持续进化</h1><div class="note primary simple"><p>“落地一个 Agent 容易，但通过一定机制自动持续优化 Agent 却很难。” —— 一位鹅厂员工的灵魂拷问</p>
+</div>
+<p>前几天读到一篇文章，收录了 9 位鹅厂员工关于「Agent 如何自动持续进化」的讨论。说实话，看完之后我在椅子上坐了好一会儿没动——这些观点里有好几个，精准地戳到了我最近在用 AI 工具时一直隐隐感觉到、但没想明白的东西。</p>
+<p>我们这个行业现在有一个很尴尬的现状：<strong>人人都在搭 Agent，但几乎没人说得清楚怎么让 Agent 越用越聪明</strong>。首版能跑，demo 炫酷，老板点头，然后呢？上线三个月，Agent 还在犯同样的错，用户还在重复同样的纠正，每次对话都像第一次上岗的实习生——永远在同一个坑里反复踩。</p>
+<p>这篇文章不是简单的转述。我想做的，是把这 9 位的观点展开、补充、串联起来，结合我自己使用 Claude Code 等 AI 工具的体感，尝试回答一个问题：<strong>Agent 进化到底是一套什么样的系统？</strong></p>
+<hr>
+<h2 id="1-先别急着优化，先学会量化"><a href="#1-先别急着优化，先学会量化" class="headerlink" title="1. 先别急着优化，先学会量化"></a>1. 先别急着优化，先学会量化</h2><p>第 1 位分享者说了一句话，听起来像废话，但其实是整件事的基石：</p>
+<blockquote>
+<p>“关键的关键是建立自己业务的评估体系：对于你的 Agent 经常执行的任务，该怎么评价 AI 每次执行结果的好坏，有了量化指标之后才能谈优化。”</p>
+</blockquote>
+<p>这话为什么重要？因为我见过太多团队在”优化 Agent”的时候，做的第一件事是——改 prompt。改了一版觉得好像好了，又改一版觉得好像又不行了，来回折腾三天，最后发现根本不知道到底是变好了还是变差了。</p>
+<p>这跟写代码一个道理。你不会在没有测试的情况下重构一个核心模块对吧？TDD 的核心思想是”先写测试再写代码”，Agent 优化也是一样——<strong>先建评估体系，再谈优化策略</strong>。</p>
+<p>具体量化什么？我觉得至少要覆盖这四个维度：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>含义</th>
+<th>为什么重要</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>任务完成率</strong></td>
+<td>Agent 在无人干预的情况下成功完成任务的比例</td>
+<td>最基本的能力衡量</td>
+</tr>
+<tr>
+<td><strong>Token 效率</strong></td>
+<td>完成同一任务消耗的 token 数</td>
+<td>越少说明上下文管理越好</td>
+</tr>
+<tr>
+<td><strong>人工干预频率</strong></td>
+<td>用户需要纠正、补充、重试的次数</td>
+<td>直接反映 Agent 的可靠性</td>
+</tr>
+<tr>
+<td><strong>错误恢复率</strong></td>
+<td>Agent 犯错后自主修复的比例</td>
+<td>衡量”越用越聪明”的核心指标</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>没有这些数字，所谓的”优化”就是盲人摸象。你甚至不知道自己在改善什么。</p>
+<hr>
+<h2 id="2-临时工和正式工：两种记忆策略"><a href="#2-临时工和正式工：两种记忆策略" class="headerlink" title="2. 临时工和正式工：两种记忆策略"></a>2. 临时工和正式工：两种记忆策略</h2><p>同一位紧接着说了一句更有意思的话：</p>
+<blockquote>
+<p>“如果你对 AI 的定位是临时工，每次都是一锤子买卖，比如 Coding Assistant，Skill 和 Rule 比较合适；如果 AI 的定位是长工，需要它自身有成长，则还需要依赖记忆模块。”</p>
+</blockquote>
+<p>这个”临时工 vs 正式工”的比喻太形象了。</p>
+<p><strong>临时工模式</strong>就是每次干完活就走，下次来还是从零开始。你靠的是给他一份详细的操作手册（Skills/Rules），让他照着做就行。Claude Code 的 CLAUDE.md 就是典型的”操作手册”——在<a href="/posts/cc2026">上一篇文章</a>里我们详细聊过它的用法。每次 Claude 犯一个错，你就加一条规则。久而久之，这份手册越来越完善，Agent 的表现也越来越好。但本质上，这不是 Agent 自己变聪明了，而是你给它的说明书写得更好了。</p>
+<p><strong>正式工模式</strong>就完全不一样了。你需要 Agent 记住上周犯过的错、上个月学到的经验、这个项目的特殊偏好。这就需要<strong>记忆模块</strong>——短期记忆处理当前任务的上下文，长期记忆沉淀跨会话的知识。</p>
+<p>记忆策略的选择取决于你的业务场景：</p>
+<ul>
+<li><strong>高频重复任务</strong>（代码审查、测试生成）→ Skills/Rules 足矣，写好手册就行</li>
+<li><strong>长期陪伴场景</strong>（个人助理、项目管理）→ 需要记忆模块，Agent 要能成长</li>
+<li><strong>混合场景</strong>（大多数实际情况）→ 两者结合，手册兜底 + 记忆增强</li>
+</ul>
+<p>我个人的感觉是，大多数人目前还停留在”临时工”阶段，CLAUDE.md 写得再好也只是一份更好的说明书。真正的突破点在于——<strong>让 Agent 像正式工一样，自己积累经验</strong>。</p>
+<hr>
+<h2 id="3-失败比成功更值钱"><a href="#3-失败比成功更值钱" class="headerlink" title="3. 失败比成功更值钱"></a>3. 失败比成功更值钱</h2><p>第 2、3、5 位从不同角度说了同一件事，合并起来就是一个极其深刻的洞察：</p>
+<blockquote>
+<p>“好数据并不是全部都正确的数据，恰恰是那些有问题但包含了纠正的数据。”</p>
+</blockquote>
+<p>这话听着反直觉对吧？我们通常觉得，训练 AI 当然要用高质量的、正确的数据。但仔细想想——人类自己是怎么学习的？</p>
+<p>你还记得高考备考的时候吗？考完试之后，老师会让你做一件事：<strong>整理错题本</strong>。不是让你把做对的题再做一遍，而是把做错的题反复看、反复练。为什么？因为错题里包含了你的知识盲区，而知识盲区正是提升空间最大的地方。</p>
+<p>Agent 也是一样。一个 Agent 顺利完成了一百个任务，这一百条记录有价值吗？有，但有限。它说明 Agent 在这类任务上已经足够好了。真正珍贵的是那些<strong>“翻车 + 纠正”的数据</strong>——Agent 犯了什么错、用户怎么纠正的、最终正确的做法是什么。这些才是驱动进化的燃料。</p>
+<p>这就是所谓的<strong>数据飞轮</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Agent 执行任务 → 犯错 → 用户纠正 → 记录&quot;错误 + 纠正&quot;数据对</span><br><span class="line">    → 反馈给 Agent/模型 → Agent 下次遇到类似问题时避开坑</span><br><span class="line">    → 犯新的错 → 继续循环</span><br></pre></td></tr></table></figure>
+<p>第 2 位说得很实在：”不然每次都像第一次上岗，永远在同一个坑里反复踩。”这句话应该贴在每一个搞 Agent 的人的工位上。</p>
+<p>但这里有一个残酷的现实，第 3 位也提到了——<strong>很多 Agent 在数据飞轮转起来之前就被推翻了</strong>。因为用户使用频率低、容忍度有限，Agent 还没攒够足够的纠正数据就被宣判死刑了。这是一个先有鸡还是先有蛋的问题：Agent 需要犯错才能进步，但用户不给它犯错的机会。</p>
+<hr>
+<h2 id="4-人在回路：安全员的智慧"><a href="#4-人在回路：安全员的智慧" class="headerlink" title="4. 人在回路：安全员的智慧"></a>4. 人在回路：安全员的智慧</h2><p>第 3 位和第 6 位都提到了 Human-in-the-Loop（人在回路），但第 3 位用了一个绝佳的类比——<strong>自动驾驶安全员</strong>。</p>
+<blockquote>
+<p>“在我们使用 Claude Code 过程中，Human-in-Loop 环节每次选择/ESC 取消/补充问题修正等过程，相当于人类在帮助 Agent 进行数据纠正（和自动驾驶安全员类似）。”</p>
+</blockquote>
+<p>你想想自动驾驶安全员是怎么工作的？他坐在驾驶座上，大部分时间不动方向盘，让自动驾驶系统自己开。但他的眼睛一刻都没离开路面。当系统要做一个危险决策的时候，他会介入——接管方向盘、踩刹车、修正路线。而这每一次介入，都会被记录下来，成为训练自动驾驶系统的宝贵数据。</p>
+<p>我们用 Claude Code 的时候，其实就是这个角色。想想你日常的操作：</p>
+<ul>
+<li><strong>显性反馈</strong>：点击确认（✓）或取消（ESC）—— 相当于安全员说”这步没问题”或”停，不对”</li>
+<li><strong>隐性反馈</strong>：看了 Agent 的建议但自己手动改了 —— 相当于安全员默默接管了方向盘</li>
+<li><strong>纠正数据</strong>：取消之后补充新的指令 —— 相当于安全员接管后手动把车开到正确位置</li>
+</ul>
+<p>这三种信号的价值是递增的。显性反馈告诉 Agent 对不对，隐性反馈暗示了哪里不够好，纠正数据直接示范了正确做法。</p>
+<p>这里有一个美妙的悖论：<strong>你干预得越多，未来需要干预的就越少</strong>。每一次纠正都在训练 Agent，每一次”安全员接管”都在让自动驾驶系统更可靠。前提是——这些干预数据被记录下来并反馈到系统中。如果你的 Agent 没有这个反馈机制，你就是白白当了一个永远不被倾听的安全员。</p>
+<hr>
+<h2 id="5-冻结的大脑-vs-流动的上下文"><a href="#5-冻结的大脑-vs-流动的上下文" class="headerlink" title="5. 冻结的大脑 vs 流动的上下文"></a>5. 冻结的大脑 vs 流动的上下文</h2><p>第 5 位用了一个特别精准的数学类比，把 LLM 的知识来源说清楚了：</p>
+<blockquote>
+<p>“模型矩阵和上下文向量，粗暴地说最后是要乘到一块去的。但模型是被冻结的部分，上下文是不断改变的部分。”</p>
+</blockquote>
+<p>翻译成人话就是：<strong>大模型有两个大脑——一个是固定的（参数），一个是临时的（上下文）</strong>。你跟 ChatGPT 聊天时塞进去的所有内容，就是那个”临时大脑”。而模型本身那几十亿上百亿的参数，是”固定大脑”——一旦训练完就冻结了。</p>
+<p>这就意味着，Agent 想要持续进化，只有两条路：</p>
+<p><strong>路径一：解冻固定大脑（模型可塑性）</strong></p>
+<p>让模型本身能够持续学习。这是 Online Learning / Continual Learning 领域的方向，技术门槛极高，目前只有大厂和顶级实验室在探索。普通开发者别想了。</p>
+<p><strong>路径二：巧用临时大脑（上下文工程）</strong></p>
+<p>既然模型参数改不了，那就把上下文做到极致。通过更好的 prompt 设计、更聪明的记忆管理、更精准的信息检索，让每次对话时塞给模型的”临时知识”更有效。</p>
+<p>第 5 位说：”第一条留给训模高手来做。第二条是当下的最热方向，创新空间巨大。”</p>
+<p>我完全同意。对于绝大多数人来说，<strong>上下文工程才是正道</strong>。你不需要训练一个新模型，你需要的是——在有限的上下文窗口里，塞进最有价值的信息。这包括：</p>
+<ul>
+<li><strong>任务相关的历史记录</strong>（Agent 之前在类似任务上犯过什么错）</li>
+<li><strong>用户偏好和习惯</strong>（你喜欢什么风格的代码、什么程度的解释）</li>
+<li><strong>领域知识的精准片段</strong>（不是整本文档，而是此刻最相关的那几段）</li>
+</ul>
+<p>上下文窗口就像一个容量有限的工作台，你不可能把整个仓库都搬上来。聪明的做法是——<strong>只放此刻真正需要的工具和材料</strong>。</p>
+<hr>
+<h2 id="6-让-Agent-学会反思"><a href="#6-让-Agent-学会反思" class="headerlink" title="6. 让 Agent 学会反思"></a>6. 让 Agent 学会反思</h2><p>第 4 位只说了六个字：”强化学习了解一下！” 但第 6 位把这个方向展开到了一个让我非常兴奋的层面——<strong>元认知</strong>。</p>
+<blockquote>
+<p>“结合元认知和本体论思想来设计 Agent：一方面依托本体知识库赋予 Agent 理解世界的能力，另一方面依托元认知赋予 Agent 对思考本身进行思考和进化的能力。”</p>
+</blockquote>
+<p>元认知这个词听起来很学术对吧？但其实概念很简单——<strong>思考自己的思考</strong>。</p>
+<p>人类之所以能持续进步，不只是因为我们会做事，更因为我们会反思。你写完一段代码之后会回头看看：”这段写得好不好？有没有更好的写法？我是不是又犯了上次那个错？”这种自我审视的能力，就是元认知。</p>
+<p>强化学习提供了一种机制，让 Agent 通过”奖励”和”惩罚”来调整行为。但如果只有强化学习，Agent 学到的是”什么行为能获得奖励”，而不是”为什么这个行为好”。加上元认知，Agent 就不只是在试错，它还在<strong>理解自己为什么错了</strong>。</p>
+<p>想象一个理想的 Agent 反思流程：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 执行任务 → 得到结果</span><br><span class="line">2. 自我评估：&quot;这个结果好不好？哪里不够好？&quot;</span><br><span class="line">3. 归因分析：&quot;问题出在哪一步？是理解错了用户意图，还是选错了工具？&quot;</span><br><span class="line">4. 策略调整：&quot;下次遇到类似情况，我应该先确认意图再动手&quot;</span><br><span class="line">5. 记忆沉淀：把这条经验存下来</span><br></pre></td></tr></table></figure>
+<p>这不就是一个有自我意识的学习者吗？说实话，每次想到这里我都会有一种奇妙的感觉——我们在讨论的，到底是软件工程，还是认知科学？</p>
+<hr>
+<h2 id="7-用-AI-优化-AI：自动进化的-System-Prompt"><a href="#7-用-AI-优化-AI：自动进化的-System-Prompt" class="headerlink" title="7. 用 AI 优化 AI：自动进化的 System Prompt"></a>7. 用 AI 优化 AI：自动进化的 System Prompt</h2><p>第 7 位提供了一个非常落地的方案——<strong>用 AI 模型来逐步优化 system_message</strong>。</p>
+<p>这个思路特别务实。我们都知道 system prompt 对 Agent 行为的影响有多大——一个好的 system prompt 和一个随便写的 system prompt，出来的效果可能天差地别。但问题是，<strong>怎么知道你的 system prompt 是好是坏？怎么系统性地改进它？</strong></p>
+<p>第 7 位的回答很直接：让 AI 自己来做这件事。</p>
+<p>这里他还提到了一个重要的细节：<strong>XML 格式的结构化规则 &gt;&gt; 随手写的字符串</strong>。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 好的 system prompt --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">rules</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">rule</span> <span class="attr">name</span>=<span class="string">&quot;error_handling&quot;</span> <span class="attr">priority</span>=<span class="string">&quot;high&quot;</span>&gt;</span></span><br><span class="line">    当遇到页面加载超时时，先截图记录当前状态，</span><br><span class="line">    然后等待 3 秒重试，最多重试 2 次。</span><br><span class="line">  <span class="tag">&lt;/<span class="name">rule</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">rule</span> <span class="attr">name</span>=<span class="string">&quot;form_filling&quot;</span> <span class="attr">priority</span>=<span class="string">&quot;medium&quot;</span>&gt;</span></span><br><span class="line">    填写表单前先检查所有必填字段是否已定位到，</span><br><span class="line">    未定位到的字段用日志标注并跳过。</span><br><span class="line">  <span class="tag">&lt;/<span class="name">rule</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">rules</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 不好的 system prompt --&gt;</span></span><br><span class="line">&quot;你是一个浏览器自动化助手，帮我填写网页表单，遇到错误要重试。&quot;</span><br></pre></td></tr></table></figure>
+<p>结构化的好处在于：模型能更清晰地理解每条规则的边界、优先级和适用条件。随手写的字符串呢？模型只能靠猜。</p>
+<p>把这些串联起来，一个完整的 system prompt 自动优化闭环长这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">运行 Agent → 收集执行数据和错误日志</span><br><span class="line">    → 度量关键指标（完成率、错误率等）</span><br><span class="line">    → 把数据喂给另一个 AI，让它分析问题并提议修改 system prompt</span><br><span class="line">    → A/B 测试新旧 prompt</span><br><span class="line">    → 择优上线 → 继续循环</span><br></pre></td></tr></table></figure>
+<p>这不就是”用 AI 优化 AI”吗？而且这个流程里，人类甚至不需要亲自动手改 prompt——只需要审核 AI 提出的修改建议是否合理。</p>
+<hr>
+<h2 id="8-测试驱动的-Agent-进化"><a href="#8-测试驱动的-Agent-进化" class="headerlink" title="8. 测试驱动的 Agent 进化"></a>8. 测试驱动的 Agent 进化</h2><p>第 8 位的观点是整篇讨论中最系统化的，他直接描绘了一套<strong>多 Agent 测试流水线</strong>：</p>
+<blockquote>
+<p>“设想：在每一次测评中，引入另外一个 multi-agent，用于 AI 产品的测试。Spec Agent 评测最终结果的质量与正确性。若它认为某个测试用例不通过，那么将自主分析错误原因、分派任务给 Coding SubAgent。后续则由 SubAgent 重新复盘、优化系统提示词，并提交 PR 给人类 review。”</p>
+</blockquote>
+<p>翻译一下这个流水线：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Spec Agent（裁判）    →  评测 Agent 的输出是否达标</span><br><span class="line">    ↓ 不达标</span><br><span class="line">错误归因 Agent        →  分析哪里出了问题、置信度多高</span><br><span class="line">    ↓ 高置信度</span><br><span class="line">Coding SubAgent      →  修改 prompt / 代码 / 配置</span><br><span class="line">    ↓</span><br><span class="line">提交 PR              →  人类 Review</span><br><span class="line">    ↓ 通过</span><br><span class="line">合并上线              →  进入下一轮评测</span><br></pre></td></tr></table></figure>
+<p>这个设计有几个特别聪明的地方：</p>
+<ol>
+<li><strong>用 Agent 测试 Agent</strong>：LLM-as-Judge 不是新概念了，但把它系统化地嵌入迭代流程里，这是关键一步</li>
+<li><strong>置信度阈值</strong>：不是所有错误都触发自动修复，只有高置信度的归因才进入修复流程——避免误判导致越改越差</li>
+<li><strong>人类是守门员，不是执行者</strong>：人类不再需要手动分析错误、手动改 prompt。人类只需要 review PR，决定合不合并</li>
+</ol>
+<p>第 8 位最后说了一句让我很有感触的话：”AI 时代所谓的测试驱动开发的最佳范式，人类大概率会彻底从执行者变为守门员和裁判了。”</p>
+<p>这不是遥远的未来。现在用 Claude Code 的时候，我已经越来越多地在做”守门员”的工作——不是我在写代码，而是 Agent 在写，我在 review。不是我在调试，而是 Agent 在调试，我在判断它调得对不对。</p>
+<hr>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>把 9 位的观点串联起来看，会发现 Agent 进化不是某一个单点技巧，而是一套<strong>完整的系统</strong>。如果要用一张图来概括：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">┌──────────────┐</span><br><span class="line">│   评估体系    │  ← 量化，才能谈优化</span><br><span class="line">└──────┬───────┘</span><br><span class="line">       ↓</span><br><span class="line">┌──────────────┐</span><br><span class="line">│   反馈闭环    │  ← 错误 + 纠正 = 进化燃料</span><br><span class="line">└──────┬───────┘</span><br><span class="line">       ↓</span><br><span class="line">┌──────────────┐</span><br><span class="line">│   记忆系统    │  ← 临时工 or 正式工</span><br><span class="line">└──────┬───────┘</span><br><span class="line">       ↓</span><br><span class="line">┌──────────────┐</span><br><span class="line">│   自我反思    │  ← 思考自己的思考</span><br><span class="line">└──────┬───────┘</span><br><span class="line">       ↓</span><br><span class="line">┌──────────────┐</span><br><span class="line">│   自动迭代    │  ← 用 AI 优化 AI</span><br><span class="line">└──────────────┘</span><br></pre></td></tr></table></figure>
+<p><strong>评估 → 反馈 → 记忆 → 反思 → 迭代</strong>，这五个环节缺一不可，形成一个不断自我强化的闭环。</p>
+<p>说实话，写完这篇文章我最大的感触是——Agent 进化的本质，和人类学习的本质惊人地相似。我们也是通过犯错来成长、通过反思来进步、通过记忆来积累、通过考试来量化的。区别只在于，人类的这套系统是自然进化了几百万年的结果，而 Agent 的这套系统需要我们亲手设计。</p>
+<p>我们既是 Agent 的使用者，也是 Agent 进化系统的设计者。这个身份很奇妙——你在教一个东西学会自己教自己。</p>
+<blockquote>
+<p>原文链接：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/lbUA1NmasWD8vlVCOU3GxQ">鹅厂员工怎么看Agent自动持续进化？</a></p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.zqcblog.com">DocJlm</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.zqcblog.com/posts/agent2026.html">https://www.zqcblog.com/posts/agent2026.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://www.zqcblog.com" target="_blank">破茧者~BLOG</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/AI/">AI</a><a class="post-meta__tags" href="/tags/%E7%BC%96%E7%A8%8B/">编程</a><a class="post-meta__tags" href="/tags/Agent/">Agent</a><a class="post-meta__tags" href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">大模型</a></div><div class="post-share"><div class="social-share" data-image="/img/agent-evolution-cover.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/posts/peter2026.html" title="当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/peter-interview.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考</div></div><div class="info-2"><div class="info-item-1">当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考“I always thought I loved programming. Turns out, what I really loved was creating.”  这个男人到底什么来头前两天刷到了 Lex Fridman 播客第 491 期，嘉宾是 Peter Steinberger。说实话，如果你是做移动端开发的，PSPDFKit 这个名字你多少应该听过——十亿级别的装机量，做 PDF SDK 做到了行业天花板。这哥们花了 13 年时间把 PSPDFKit 做大，然后把公司卖了，退休了，消失了三年。 一般人到这儿故事就该结束了对吧？有钱有闲，环游世界，写写回忆录，完美收官。但 Peter 不是一般人。退休三年之后他说自己快无聊死了——“如果你每天早上醒来没有什么值得期待的事情，没有真正的挑战，那会非常非常无聊”。然后他搞了 OpenClaw，一个开源 AI Agent 项目，直接成了 GitHub 历史上增长最快的项目之一，目前251K...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/posts/peter2026.html" title="当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/peter-interview.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-03</div><div class="info-item-2">当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考</div></div><div class="info-2"><div class="info-item-1">当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考“I always thought I loved programming. Turns out, what I really loved was creating.”  这个男人到底什么来头前两天刷到了 Lex Fridman 播客第 491 期，嘉宾是 Peter Steinberger。说实话，如果你是做移动端开发的，PSPDFKit 这个名字你多少应该听过——十亿级别的装机量，做 PDF SDK 做到了行业天花板。这哥们花了 13 年时间把 PSPDFKit 做大，然后把公司卖了，退休了，消失了三年。 一般人到这儿故事就该结束了对吧？有钱有闲，环游世界，写写回忆录，完美收官。但 Peter 不是一般人。退休三年之后他说自己快无聊死了——“如果你每天早上醒来没有什么值得期待的事情，没有真正的挑战，那会非常非常无聊”。然后他搞了 OpenClaw，一个开源 AI Agent 项目，直接成了 GitHub 历史上增长最快的项目之一，目前251K...</div></div></div></a><a class="pagination-related" href="/posts/cc2026.html" title="程序员如何高效使用 Claude Code"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/claude-code-cover.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-02</div><div class="info-item-2">程序员如何高效使用 Claude Code</div></div><div class="info-2"><div class="info-item-1">程序员如何高效使用 Claude CodeClaude Code 是 Anthropic 推出的 CLI 编程助手，能直接在终端中理解你的代码仓库、执行命令、编辑文件、管理 Git——简单说，它就是一个住在你终端里的高级程序员搭档。但和所有强大工具一样，会用和用好之间隔着一道鸿沟。 本文综合了 Claude Code 创始人 Boris Cherny、Vue.js 作者尤雨溪、Google Chrome 工程负责人 Addy Osmani 等大咖的实战经验，以及 Anthropic 黑客松冠军 Affaan Mustafa 的两篇深度指南（The Shorthand Guide 和 The Longform Guide）的精华，以及社区优秀开源项目 everything-claude-code（50K+ Stars）和 awesome-claude-skills（38K+ Stars）的核心内容，帮你从”能用”进阶到”用好”。  一、理解核心约束：200K 上下文窗口在学任何技巧之前，先理解这一点：Claude Code 的 200K token...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/tlxy.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">DocJlm</div><div class="author-info-description">The Only Thing You Have to Fear Is Your Own Code</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/DocJlm"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon faa-parent animated-hover" href="https://github.com/DocJlm" target="_blank" title="Github"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-gitHub"></use></svg></a><a class="social-icon faa-parent animated-hover" href="mailto:zqc0914@gmail.com" target="_blank" title="Email"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-youxiang"></use></svg></a><a class="social-icon faa-parent animated-hover" href="/atom.xml" target="_blank" title="RSS"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-rss"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com" target="_blank" title="BiliBili"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://github.com/DocJlm" target="_blank" title="QQ"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-QQ1"></use></svg></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%B9%85%E5%8E%82%E4%B9%9D%E4%BA%BA%E8%B0%88%EF%BC%9A%E5%A6%82%E4%BD%95%E8%AE%A9Agent%E8%87%AA%E5%8A%A8%E6%8C%81%E7%BB%AD%E8%BF%9B%E5%8C%96"><span class="toc-number">1.</span> <span class="toc-text">鹅厂九人谈：如何让Agent自动持续进化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%85%88%E5%88%AB%E6%80%A5%E7%9D%80%E4%BC%98%E5%8C%96%EF%BC%8C%E5%85%88%E5%AD%A6%E4%BC%9A%E9%87%8F%E5%8C%96"><span class="toc-number">1.1.</span> <span class="toc-text">1. 先别急着优化，先学会量化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%B8%B4%E6%97%B6%E5%B7%A5%E5%92%8C%E6%AD%A3%E5%BC%8F%E5%B7%A5%EF%BC%9A%E4%B8%A4%E7%A7%8D%E8%AE%B0%E5%BF%86%E7%AD%96%E7%95%A5"><span class="toc-number">1.2.</span> <span class="toc-text">2. 临时工和正式工：两种记忆策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%A4%B1%E8%B4%A5%E6%AF%94%E6%88%90%E5%8A%9F%E6%9B%B4%E5%80%BC%E9%92%B1"><span class="toc-number">1.3.</span> <span class="toc-text">3. 失败比成功更值钱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E4%BA%BA%E5%9C%A8%E5%9B%9E%E8%B7%AF%EF%BC%9A%E5%AE%89%E5%85%A8%E5%91%98%E7%9A%84%E6%99%BA%E6%85%A7"><span class="toc-number">1.4.</span> <span class="toc-text">4. 人在回路：安全员的智慧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%86%BB%E7%BB%93%E7%9A%84%E5%A4%A7%E8%84%91-vs-%E6%B5%81%E5%8A%A8%E7%9A%84%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="toc-number">1.5.</span> <span class="toc-text">5. 冻结的大脑 vs 流动的上下文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E8%AE%A9-Agent-%E5%AD%A6%E4%BC%9A%E5%8F%8D%E6%80%9D"><span class="toc-number">1.6.</span> <span class="toc-text">6. 让 Agent 学会反思</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E7%94%A8-AI-%E4%BC%98%E5%8C%96-AI%EF%BC%9A%E8%87%AA%E5%8A%A8%E8%BF%9B%E5%8C%96%E7%9A%84-System-Prompt"><span class="toc-number">1.7.</span> <span class="toc-text">7. 用 AI 优化 AI：自动进化的 System Prompt</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E6%B5%8B%E8%AF%95%E9%A9%B1%E5%8A%A8%E7%9A%84-Agent-%E8%BF%9B%E5%8C%96"><span class="toc-number">1.8.</span> <span class="toc-text">8. 测试驱动的 Agent 进化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="toc-number">1.9.</span> <span class="toc-text">写在最后</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/agent2026.html" title="鹅厂九人谈：如何让Agent自动持续进化"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/agent-evolution-cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="鹅厂九人谈：如何让Agent自动持续进化"/></a><div class="content"><a class="title" href="/posts/agent2026.html" title="鹅厂九人谈：如何让Agent自动持续进化">鹅厂九人谈：如何让Agent自动持续进化</a><time datetime="2026-03-04T06:00:00.000Z" title="发表于 2026-03-04 14:00:00">2026-03-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/peter2026.html" title="当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/peter-interview.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考"/></a><div class="content"><a class="title" href="/posts/peter2026.html" title="当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考">当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考</a><time datetime="2026-03-03T02:00:00.000Z" title="发表于 2026-03-03 10:00:00">2026-03-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/cc2026.html" title="程序员如何高效使用 Claude Code"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/claude-code-cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="程序员如何高效使用 Claude Code"/></a><div class="content"><a class="title" href="/posts/cc2026.html" title="程序员如何高效使用 Claude Code">程序员如何高效使用 Claude Code</a><time datetime="2026-03-02T04:00:00.000Z" title="发表于 2026-03-02 12:00:00">2026-03-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/428b39ea.html" title="KMP详解"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/KMP.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="KMP详解"/></a><div class="content"><a class="title" href="/posts/428b39ea.html" title="KMP详解">KMP详解</a><time datetime="2025-09-14T02:52:41.000Z" title="发表于 2025-09-14 10:52:41">2025-09-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/956e041d.html" title="李克勤院士"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/lkq.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="李克勤院士"/></a><div class="content"><a class="title" href="/posts/956e041d.html" title="李克勤院士">李克勤院士</a><time datetime="2025-06-27T06:49:56.000Z" title="发表于 2025-06-27 14:49:56">2025-06-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 - 2026 By DocJlm</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="13771892874" data-server="netease" data-type="playlist"   data-order="list" data-fixed="true" data-preload="auto" data-autoplay="false" data-mutex="true" ></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      const usePjax = true
+      true 
+        ? (usePjax ? pjax.loadUrl('/404.html') : window.location.href = '/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})()</script><div class="app-refresh" id="app-refresh" style="position: fixed;top: -2.2rem;left: 0;right: 0;z-index: 99999;padding: 0 1rem;font-size: 15px;height: 2.2rem;transition: all 0.3s ease;"><div class="app-refresh-wrap" style=" display: flex;color: #fff;height: 100%;align-items: center;justify-content: center;"><label>✨ 有新文章啦！ 👉</label><a href="javascript:void(0)" onclick="location.reload()"><span style="color: #fff;text-decoration: underline;cursor: pointer;">🍗点击食用🍔</span></a></div></div><script>if ('serviceWorker' in navigator) {
+if (navigator.serviceWorker.controller) {
+navigator.serviceWorker.addEventListener('controllerchange', function() {
+showNotification()
+})
+}
+window.addEventListener('load', function() {
+navigator.serviceWorker.register('/sw.js')
+})
+}
+function showNotification() {
+if (GLOBAL_CONFIG.Snackbar) {
+var snackbarBg =
+document.documentElement.getAttribute('data-theme') === 'light' ?
+GLOBAL_CONFIG.Snackbar.bgLight :
+GLOBAL_CONFIG.Snackbar.bgDark
+var snackbarPos = GLOBAL_CONFIG.Snackbar.position
+Snackbar.show({
+text: '✨ 有新文章啦！ 👉',
+backgroundColor: snackbarBg,
+duration: 500000,
+pos: snackbarPos,
+actionText: '🍗点击食用🍔',
+actionTextColor: '#fff',
+onActionClick: function(e) {
+location.reload()
+},
+})
+} else {
+var showBg =
+document.documentElement.getAttribute('data-theme') === 'light' ?
+'#3b70fc' :
+'#1f1f1f'
+var cssText = `top: 0; background: ${showBg};`
+document.getElementById('app-refresh').style.cssText = cssText
+}
+}</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start -->
+  <script data-pjax src="/js/hexo_githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://github-calendar-api.meta-code.top/api?user=DocJlm";
+            var git_color =['#ebedf0', '#a2f7af', '#6ce480', '#54ad63', '#469252', '#31753c', '#1f5f2a', '#13531f', '#084111', '#032b09', '#000000'];
+            var git_user ="DocJlm";
+            var parent_div_git = document.getElementById('recent-posts');
+            var git_div_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/'){
+                console.log("已挂载hexo-github-calendar https://github.com/Barry-Flynn/hexo-github-calendar");
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementById('recent-posts')){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:280px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style></style><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" data-title="主题版本Butterfly_v4.2.2" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" data-title="本站使用JsDelivr为静态资源提供CDN加速" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/runtime/runtime.min.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item swiper_container_card" style="height: auto;width: 100%"><div id="random"><div id="random-banner"><canvas id="peoplecanvas"></canvas></div><a id="random-hover" style="width:100%;height:auto;" href="javascript:toRandomPost()" rel="external nofollow noreferrer" one-link-mark="yes"><i class="fa fa-paper-plane" style="margin-left:10px"></i><div style="margin-left:10px">随便逛逛<i class="fa-solid fa-arrow-right" style="margin-left:10px"></i></div></a></div><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/af5d4fac.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/smhfx.jpg" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2025-05-31</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/af5d4fac.html&quot;);" href="javascript:void(0);" alt="">碎梦后繁星</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/af5d4fac.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/agent2026.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/agent-evolution-cover.png" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2026-03-04</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/agent2026.html&quot;);" href="javascript:void(0);" alt="">鹅厂九人谈：如何让Agent自动持续进化</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/agent2026.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/peter2026.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/peter-interview.jpg" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2026-03-03</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/peter2026.html&quot;);" href="javascript:void(0);" alt="">当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/peter2026.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/428b39ea.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/KMP.webp" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2025-09-14</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/428b39ea.html&quot;);" href="javascript:void(0);" alt="">KMP详解</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/428b39ea.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/956e041d.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/lkq.jpg" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2025-06-27</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/956e041d.html&quot;);" href="javascript:void(0);" alt="">李克勤院士</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/956e041d.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/cc2026.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/claude-code-cover.png" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2026-03-02</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/cc2026.html&quot;);" href="javascript:void(0);" alt="">程序员如何高效使用 Claude Code</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/cc2026.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://cdn.jsdelivr.net/npm/anzhiyu-blog@1.1.6/js/swiper.min.js"></script><script defer data-pjax src="https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper-anzhiyu@1.0.4/lib/swiper_init.js"></script><script data-pjax src="https://cdn.jsdelivr.net/npm/gsap@3.9.1/dist/gsap.min.js"></script><script defer src="/js/people.min.js"></script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '30');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('article-sort-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__slideInRight');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="https://cdn.jsdelivr.net/npm/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/hexo-butterfly-wowjs/lib/wow_init.js"></script><script async src="/js/ali_font.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body></html>
