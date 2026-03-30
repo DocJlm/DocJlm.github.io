@@ -1,0 +1,475 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>当 AI 编程进入下半场，拼的不是模型，而是 Harness | 破茧者~BLOG</title><meta name="author" content="DocJlm"><meta name="copyright" content="DocJlm"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="当 AI 编程进入下半场，拼的不是模型，而是 HarnessHumans steer. Agents execute.  最近几个月，我把 OpenAI、Anthropic、LangChain、Thoughtworks、HumanLayer 这些团队关于 Agent 的文章基本顺着看了一遍，越看越觉得现在很多人对 AI 编程的理解，还停留在一个挺早期的阶段。大家最爱聊的还是模型、prompt、MC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="当 AI 编程进入下半场，拼的不是模型，而是 Harness">
+<meta property="og:url" content="https://www.zqcblog.com/posts/harness2026.html">
+<meta property="og:site_name" content="破茧者~BLOG">
+<meta property="og:description" content="当 AI 编程进入下半场，拼的不是模型，而是 HarnessHumans steer. Agents execute.  最近几个月，我把 OpenAI、Anthropic、LangChain、Thoughtworks、HumanLayer 这些团队关于 Agent 的文章基本顺着看了一遍，越看越觉得现在很多人对 AI 编程的理解，还停留在一个挺早期的阶段。大家最爱聊的还是模型、prompt、MC">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.zqcblog.com/img/harness-cover.svg">
+<meta property="article:published_time" content="2026-03-29T15:30:00.000Z">
+<meta property="article:modified_time" content="2026-03-30T05:13:16.542Z">
+<meta property="article:author" content="DocJlm">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="编程">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="Harness Engineering">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.zqcblog.com/img/harness-cover.svg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "当 AI 编程进入下半场，拼的不是模型，而是 Harness",
+  "url": "https://www.zqcblog.com/posts/harness2026.html",
+  "image": "https://www.zqcblog.com/img/harness-cover.svg",
+  "datePublished": "2026-03-29T15:30:00.000Z",
+  "dateModified": "2026-03-30T05:13:16.542Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "DocJlm",
+      "url": "https://www.zqcblog.com/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://www.zqcblog.com/posts/harness2026.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="baidu-site-verification" content="codeva-3h400Ia68Y"/><link rel="manifest" href="/manifest.json"/><meta name="msapplication-TileColor" content="#3b70fc"/><link rel="apple-touch-icon" sizes="180x180" href="/img/siteicon/128.png"/><link rel="icon" type="image/png" sizes="32x32" href="/img/siteicon/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/img/siteicon/16.png"/><link rel="mask-icon" href="/img/siteicon/128.png" color="#5bbad5"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '当 AI 编程进入下半场，拼的不是模型，而是 Harness',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/anzhiyu-blog@2.0.4/css/runtime/runtime.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='screen'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper-anzhiyu@1.0.4/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper-anzhiyu@1.0.4/lib/swiperstyle.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="破茧者~BLOG" type="application/atom+xml">
+</head><body><div id="web_bg" style="background-image: url(/img/bg.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/tlxy.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw fas fa-home faa-tada"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw fas fa-archive faa-tada"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw fas fa-folder-open faa-tada"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw fas fa-envelope faa-tada"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/link/"><i class="fa-fw fas fa-link faa-tada"></i><span> 友人帐</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/bangumis/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili1"></use></svg><span> 追番</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-zhifeiji"></use></svg><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/harness-cover.svg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">破茧者~BLOG</span></a><a class="nav-page-title" href="/"><span class="site-name">当 AI 编程进入下半场，拼的不是模型，而是 Harness</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/"><i class="fa-fw fas fa-home faa-tada"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/archives/"><i class="fa-fw fas fa-archive faa-tada"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/categories/"><i class="fa-fw fas fa-folder-open faa-tada"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/comments/"><i class="fa-fw fas fa-envelope faa-tada"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/link/"><i class="fa-fw fas fa-link faa-tada"></i><span> 友人帐</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/bangumis/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili1"></use></svg><span> 追番</span></a></div><div class="menus_item"><a class="site-page faa-parent animated-hover" href="/about/"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-zhifeiji"></use></svg><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">当 AI 编程进入下半场，拼的不是模型，而是 Harness</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-03-29T15:30:00.000Z" title="发表于 2026-03-29 23:30:00">2026-03-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-03-30T05:13:16.542Z" title="更新于 2026-03-30 13:13:16">2026-03-30</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">6.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>21分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="当-AI-编程进入下半场，拼的不是模型，而是-Harness"><a href="#当-AI-编程进入下半场，拼的不是模型，而是-Harness" class="headerlink" title="当 AI 编程进入下半场，拼的不是模型，而是 Harness"></a>当 AI 编程进入下半场，拼的不是模型，而是 Harness</h1><div class="note primary simple"><p>Humans steer. Agents execute.</p>
+</div>
+<p>最近几个月，我把 OpenAI、Anthropic、LangChain、Thoughtworks、HumanLayer 这些团队关于 Agent 的文章基本顺着看了一遍，越看越觉得现在很多人对 AI 编程的理解，还停留在一个挺早期的阶段。大家最爱聊的还是模型、prompt、MCP、上下文窗口，仿佛只要这些关键词掌握得够熟，AI 编程就算学明白了。但真把那些一线团队的实践拆开看，你会发现他们真正花时间、花精力、花工程能力去补的，常常不是模型本身，而是模型外面的东西。</p>
+<p>同样是 Claude Code、Codex、Cursor，有人让 AI 改两个文件就开始发散，修一个 bug 顺手再造三个 bug；也有人能让 Agent 自己读仓库、跑测试、看日志、开 PR、吃 review、修回归，连续干几个小时还不崩。很多人第一反应是模型差距，但你真把这些案例拆开看，会发现真正拉开差距的，往往不是模型本身，而是模型外面那套工作环境。</p>
+<p>这套东西，现在慢慢有了一个更稳定的名字，叫 <strong>Harness</strong>。</p>
+<p>我一开始其实挺烦这种新词，感觉像又在给老东西换包装。后来资料看多了，才发现不是。因为它讨论的已经不是“prompt 怎么写更巧”“MCP 要不要接”“要不要多开几个 Agent”这种局部技巧，而是在追问一个更硬的问题：你到底有没有给 AI 一个能持续工作、能不断纠错、能长期积累的环境？如果没有，再强的模型也只能偶尔灵光一现；如果有，它才可能从一个聊天框，慢慢变成一个真的能协作的执行者。</p>
+<h2 id="Harness-到底是什么"><a href="#Harness-到底是什么" class="headerlink" title="Harness 到底是什么"></a>Harness 到底是什么</h2><p>LangChain 那篇《The Anatomy of an Agent Harness》里给了一个很简洁的说法，叫 <strong>Agent = Model + Harness</strong>。这句话我觉得好就好在，它一下子把很多空话都裁掉了。模型负责的是能力上限，Harness 负责的是稳定下限；模型决定它会不会，Harness 决定它稳不稳；模型给你生成的可能性，Harness 决定这些可能性能不能真的落地。</p>
+<p>所以 Harness 说白了，不是什么玄乎的新发明，它就是 AI 的工作台。你得给它文件系统，给它清晰的仓库结构，给它能读懂的文档，给它能实际调用的工具，给它看运行结果的入口，给它知道哪里算错、哪里算对的反馈机制。再往后一点，你还得管它每次会话之间怎么接力，怎么恢复，怎么避免把上下文越用越脏，怎么让坏模式不要在仓库里越长越多。没有这些，模型再强也只是个会说话的概率机器；有了这些，它才可能开始干真正复杂、真正长期的活。</p>
+<p>这也是为什么我现在越来越觉得，prompt engineering 这件事并没有死，但它的地位确实降了。以前大家总觉得谁更会写 prompt，谁就更会用 AI。现在看，prompt 当然还重要，但它已经更像一台机器里的一个零件，而不是那台机器本身。你只研究 prompt，不研究环境、约束、反馈和恢复，最后就很容易陷入一种很熟悉的局面：AI 偶尔特别惊艳，但一拉长流程就散，一碰真实系统就乱，一遇到复杂项目就开始到处漏风。</p>
+<h2 id="OpenAI-真正讲明白的，不是“AI-写了一百万行代码”，而是“工程师开始不直接写代码了”"><a href="#OpenAI-真正讲明白的，不是“AI-写了一百万行代码”，而是“工程师开始不直接写代码了”" class="headerlink" title="OpenAI 真正讲明白的，不是“AI 写了一百万行代码”，而是“工程师开始不直接写代码了”"></a>OpenAI 真正讲明白的，不是“AI 写了一百万行代码”，而是“工程师开始不直接写代码了”</h2><p>OpenAI 那篇《Harness engineering: leveraging Codex in an agent-first world》之所以能一下子把 Harness 这个词带火，不是因为它用了什么特别花哨的概念，而是因为它给了一个所有人都没法忽略的案例。三名工程师，五个月，零手写代码，做出一个约一百万行代码的真实产品，已经有内部日活用户，也有外部 alpha 测试用户。文章里提到，五个月里大概开了 1500 个 PR，平均每个工程师每天 3.5 个 PR，而且随着团队从 3 人长到 7 人，吞吐量还在往上走。</p>
+<p>但老实说，真正值得看的根本不是这个数字，而是他们从头到尾都在强调一件事：团队最早的瓶颈，不是模型不够强，而是环境不够完整。项目早期推进慢，不是 Codex 不能写，而是仓库里缺少足够清晰的工具、抽象、结构和内部约束，Agent 没法稳定朝高层目标推进。于是工程师的主要工作，慢慢从“自己写实现”变成了“给 Agent 补能力”。</p>
+<p>这句话非常关键，因为它把很多人今天的误区一下子点穿了。很多人一遇到 AI 产出差，第一反应就是模型还不够强，提示词还不够细，训练数据没见过我的项目。OpenAI 这篇文章给出的回答完全是另一套逻辑：当 Agent 卡住时，不要先问它为什么不聪明，要先问系统里缺了什么。这个视角一变，后面所有动作都会跟着变。</p>
+<p>OpenAI 后来做的那些事情，看上去很杂，但其实都在沿着同一条线往前推。首先他们自己就踩过一个非常典型的坑：把系统说明、架构规范、代码风格、注意事项全塞进一个巨大的 <code>AGENTS.md</code>，以为信息给得越全越好。结果恰恰相反，AI 被淹没了。后来他们把 <code>AGENTS.md</code> 压得很短，只保留入口和导航的作用，真正的设计文档、架构文档、计划文档、质量文档都分开放回 repo，让 Agent 在需要的时候自己去找。这个改动表面看只是文档整理，实际上背后是个很硬的判断：AI 不需要一开始就知道一切，它需要的是在正确的时机拿到正确的信息。</p>
+<p>再往后，他们做的事就更有意思了。OpenAI 不是只让 Codex 看源码，而是让它能跑 bash、执行代码、打开应用、驱动浏览器、看 DOM snapshot、截图、查日志、查指标、看 trace。你仔细想想，这些东西凑在一起，才构成了一个真正像样的工作台。因为很多 bug 根本不在代码字面上，而是在运行之后才出现。你不给 Agent 这些反馈，它就只能闭眼猜。你给了，它才有机会真的像工程师一样，写完，运行，观察，修正，再验证。</p>
+<p>他们还做了一件特别工程的事，就是把规则尽量从“文档建议”变成“机械约束”。比如他们把业务域内部固定成 <code>Types -&gt; Config -&gt; Repo -&gt; Service -&gt; Runtime -&gt; UI</code> 这种依赖方向，然后用自定义 lint 和结构测试去硬卡。这个点我觉得特别重要，因为它说明了一个事实：对 Agent 来说，稳定边界的价值远高于自由发挥。很多人总怕“约束太多会不会限制创造力”，但对 Agent 而言，边界清楚往往恰恰会让它更稳定。</p>
+<p>还有一个我特别喜欢的细节。OpenAI 说他们后来连 linter 的错误提示都专门改过，因为这些提示不只是给人看，也要给 Agent 看。以前我们默认所有工具链的第一读者都是人，现在不是了。未来很多工程系统，第一读者很可能是 Agent。这个变化其实非常深，它意味着软件工程里很多原本“默会的、靠经验理解的东西”，都要被重新翻译成机器也能稳定读懂的形式。</p>
+<p>再往后一个层次，就是他们发现坏模式会扩散。Agent 会模仿仓库里已经存在的风格，哪怕这些风格本身就不太好。时间一长，坏抽象、坏习惯、坏代码味道会像霉菌一样蔓延。OpenAI 最开始是靠人类每周花很多时间清理这些东西，后来发现根本不可持续，于是开始把清理逻辑系统化，把“黄金原则”写进 repo，定期让系统去巡检仓库里的文档和代码模式，发现过期说明、坏味道和跑偏的地方，就自己提修复 PR。你会发现，到了这一步，所谓 Harness 已经不是“给 AI 几个工具”那么浅的东西了，它开始变成一整套维持秩序、抑制熵增、让系统长期不烂掉的工程机制。</p>
+<p>所以 OpenAI 这篇文章最震撼我的，不是“AI 写了一百万行代码”，而是它把工程师的角色讲变了。人类开始越来越少地直接下场写实现，越来越多地去设计结构、定义规则、布置反馈、维护秩序。这不是“AI 帮我写代码”这么简单了，而是软件工程本身在为了 AI 协作重新长一遍。</p>
+<h2 id="Anthropic-讲得更现实：长任务真正的敌人，不是笨，而是失忆和自我感觉良好"><a href="#Anthropic-讲得更现实：长任务真正的敌人，不是笨，而是失忆和自我感觉良好" class="headerlink" title="Anthropic 讲得更现实：长任务真正的敌人，不是笨，而是失忆和自我感觉良好"></a>Anthropic 讲得更现实：长任务真正的敌人，不是笨，而是失忆和自我感觉良好</h2><p>如果说 OpenAI 把 Harness 的大方向说得很震撼，那 Anthropic 的文章更像在给你拆工程现场。它们没有那么强的“传奇叙事”，但特别贴地。尤其是《Effective harnesses for long-running agents》和《Harness design for long-running application development》这两篇，几乎把长任务为什么容易废掉讲透了。</p>
+<p>Anthropic 观察到的第一个问题特别真实：长任务一旦跨多个上下文窗口，Agent 很容易开始失忆。前一个会话里想明白的事，后一个会话未必还知道；前一个会话里埋下的坑，后一个会话经常会踩第二遍。于是项目就会进入一种很熟悉的状态：半截功能，半截修复，半截理解，最后谁也说不清现在到底卡在哪一步。</p>
+<p>第二个问题更好笑，也更常见：Agent 特别容易过早宣布“差不多做完了”。项目做到一半，它看了一眼页面，觉得“好像也能用”，就开始收尾。这个现象你一旦见过一次，后面就很难忘，因为它太像一个自我感觉良好的实习生了。Anthropic 对这个问题的判断很准：这不是单纯的推理能力不够，而是状态管理和验证闭环太差。</p>
+<p>所以他们的做法很工程化。第一轮不是直接开写，而是先跑一个 initializer agent，把环境搭起来，自动生成 <code>init.sh</code>，写 <code>claude-progress.txt</code>，把需求拆成结构化的 feature list。后面的 coding agent 不再从零开始猜世界，而是每次只推进一个明确子任务，做完之后留下 handoff artifact，让下一个会话接班。你会发现，这整套做法的核心根本不是“让模型更聪明”，而是<strong>别失忆</strong>。</p>
+<p>Anthropic 另一点讲得特别明白，就是端到端验证的重要性。模型特别容易把“代码改了”误判成“功能好了”。它可能跑一下单测，或者 <code>curl</code> 一下接口，就觉得这件事 done 了。但用户路径一走，发现页面不通、按钮失效、交互断裂。所以他们后来非常强调浏览器自动化和真实用户视角的验证。能看到按钮点没点通、页面有没有挂、交互是不是顺手，这比只看 diff 有价值得多。</p>
+<p>这里面最关键的，其实是他们不再让模型闭眼改。只要你让 Agent 看得见运行结果、看得见页面状态、看得见真实用户路径，它的表现就会比“纯凭代码猜”稳定得多。这点和 OpenAI 的思路完全是一致的。</p>
+<p>更进一步，Anthropic 在另一篇文章里把 generator / evaluator 这套双环路也讲得很清楚。说白了就是：负责生成的 Agent 不负责给自己打分，另一个 Agent 拿着工具去真实操作页面、检查功能、截图、对照标准打分，再把问题反馈回来。这个设计最打动我的地方，不是“多 Agent 听起来很高级”，而是它把一个大家平时不好意思承认的事实说透了：<strong>模型自评真的非常不靠谱。</strong> 特别是在设计任务、前端任务这种主观度高的场景里，一个页面到底是“能看”还是“真的好”，一个交互到底是“勉强通”还是“顺手”，模型自己往往没那么清醒。它太容易对半成品说“已经不错了”。</p>
+<p>Anthropic 后面那几篇 context engineering、sandboxing、tool design 的文章，其实也都在补同一件事。上下文不是垃圾桶，而是注意力预算；沙箱不是束缚，而是自治的前提；工具不是越多越好，而是越清晰越好。你把这些东西全放一起看，就会发现 Anthropic 真正在做的，不是给 Agent 增加一点花里胡哨的新能力，而是在不断把它从“会胡乱发挥的聪明人”往“在边界内稳定做事的工程角色”上拉。</p>
+<h2 id="HumanLayer-这批文章最值钱的地方，是把很多细活讲透了"><a href="#HumanLayer-这批文章最值钱的地方，是把很多细活讲透了" class="headerlink" title="HumanLayer 这批文章最值钱的地方，是把很多细活讲透了"></a>HumanLayer 这批文章最值钱的地方，是把很多细活讲透了</h2><p>如果说 OpenAI 和 Anthropic 是把大方向讲清楚，那 HumanLayer 那几篇文章的价值，就在于它们特别像一线使用者写的复盘。没有那么多宏大叙事，但很多点一看就知道是被真实问题逼出来的。</p>
+<p>我最认同的是他们对 <code>CLAUDE.md</code> 这类文件的态度。HumanLayer 在《Writing a good CLAUDE.md》里讲得很克制：这种文件是高杠杆点，因为它会稳定进入每次会话；但它也是高风险点，因为你很容易把它写成垃圾场。太多人写这类文件时，思路其实是“把我脑子里的所有想法都塞进去”。结果不是帮助，而是污染。短、小、稳定、只写模型自己推不出来但又会反复用到的规则，这种做法反而更有效。这点和 OpenAI 后来把大 <code>AGENTS.md</code> 拆散，逻辑是一模一样的。</p>
+<p>HumanLayer 另一个特别强的观点，是他们把 sub-agents 直接看作一种 context firewall。这个比喻我觉得非常准确。一个复杂任务如果所有搜索、探索、grep、read、试错都塞进主上下文，主线程很快就会被临时垃圾拖死。让子 agent 在自己的上下文里把局部问题做完，再把压缩后的结论交回来，主上下文才能保持干净。这种思路和 Anthropic 那篇多 agent 研究系统的文章，其实也能对上。</p>
+<p>还有那篇《Context-Efficient Backpressure for Coding Agents》，虽然讲的是一个很小的点，但我觉得特别有含金量。测试、构建、lint 成功时，不要把海量输出都倒进上下文里，直接给一个简短通过信号就够了；只有失败时，再把详细错误吐出来。这个点很多人会觉得“是不是太细了”，但实际上它直指一个核心问题：不是所有信息都配进入模型的注意力范围。大量 <code>PASS PASS PASS</code> 和无意义长输出，对 Agent 来说没有任何分析价值，只是在耗 token 和污染上下文。</p>
+<p>HumanLayer 还有个判断我特别认同，就是那篇《Skill Issue: Harness Engineering for Coding Agents》里说的：很多 coding agent 效果差，不是 model issue，而是 configuration issue。skills、MCP、memory、sub-agents、hooks，这些都不是边角配件，而是 coding agent 的 configuration surface，也就是 harness。这个说法很扎心，但也确实把问题说透了。很多人不是不会用模型，而是根本没给模型一个像样的配置平面。</p>
+<h2 id="Thoughtworks、Inngest-这些文章把另外半边补上了：别迷信框架，要重视系统纪律"><a href="#Thoughtworks、Inngest-这些文章把另外半边补上了：别迷信框架，要重视系统纪律" class="headerlink" title="Thoughtworks、Inngest 这些文章把另外半边补上了：别迷信框架，要重视系统纪律"></a>Thoughtworks、Inngest 这些文章把另外半边补上了：别迷信框架，要重视系统纪律</h2><p>再往下看，会发现很多文章最后都绕不开同一个话题：<strong>约束和系统纪律。</strong></p>
+<p>Thoughtworks 那篇《Harness Engineering》我觉得特别好的一点，是它没有被“新词”带跑，而是把这件事拉回了工程本身。他们把重点落在三件事上：context engineering、architectural constraints、entropy control，也就是持续清理漂移和坏模式。这其实和 OpenAI 的经验高度重合。说明一线团队最后都在同一类问题上收敛。</p>
+<p>Inngest 那篇《Your Agent Needs a Harness, Not a Framework》则从另一个方向把问题说透了。它的核心观点是：Agent 最终碰到的很多问题，本质上不是 AI 问题，而是基础设施问题。比如任务做到第五步挂了怎么办，两条消息同时打进来怎么防止状态冲撞，一个长循环怎么拆成可重试的 step，中间结果怎么持久化，出错之后谁来接管、怎么通知。这些问题如果放回传统软件工程里，大家都觉得理所当然；可一到 Agent 这里，很多人又突然回到“给个 prompt 试试”的原始社会。</p>
+<p>所以我现在越来越认同 Inngest 这个判断：很多团队不是缺 framework，而是缺 harness。真正难的地方，通常不在“怎么让模型更会想”，而在“怎么让系统别失控”。</p>
+<h2 id="很多人现在最缺的，不是更多-Agent，而是更像样的规格、评估和可观测性"><a href="#很多人现在最缺的，不是更多-Agent，而是更像样的规格、评估和可观测性" class="headerlink" title="很多人现在最缺的，不是更多 Agent，而是更像样的规格、评估和可观测性"></a>很多人现在最缺的，不是更多 Agent，而是更像样的规格、评估和可观测性</h2><p>还有一层很容易被忽略，但其实非常要命，那就是 spec、eval 和 observability。</p>
+<p>规格不清，Agent 往往不是做不动，而是高效率跑偏。OpenAI 把设计文档、架构文档、计划文档、质量文档都收进 repo，Anthropic 把 feature list 结构化，GitHub 的 <code>spec-kit</code> 干脆直接把这种思路产品化了。本质都在回答同一个问题：Agent 到底在替你完成什么目标，按什么流程推进，做到什么程度才算结束。一旦进入多会话、多步骤、多 Agent 的世界，模糊规格的代价会被无限放大。人类工程师还能靠 tacit knowledge 补一补，Agent 补不了。</p>
+<p>评估这件事也是一样。OpenAI 后面关于 eval 的几篇东西，像 <code>eval skills</code>、<code>agent evals</code>、<code>trace grading</code>，本质上都在做一件事：把 Agent 的过程纳入评估，而不是只看最后一句答案像不像。因为 Agent 经常不是输在最后结果，而是中间某一步就已经歪了。你不看 trace、不看过程、不做任务级 eval，很多问题根本不会暴露出来。LangChain 那篇《Improving Deep Agents with harness engineering》甚至直接给出了一个很有说服力的例子：他们的 coding agent 在 Terminal Bench 2.0 上从 Top 30 到 Top 5，改的不是模型，而是 harness，重点就是 self-verification 和 tracing。这句话其实已经够说明问题了，今天很多性能提升，来自系统外壳，而不是大脑本身。</p>
+<p>可观测性就更不用说了。OpenAI 让 Codex 看 logs、metrics、traces，Anthropic 让 evaluator 用浏览器去真实操作页面。背后只有一个朴素事实：如果你不让 Agent 看见系统运行后的真实反馈，它就只能闭眼猜。而闭眼猜这件事，偶尔能蒙对，但很难持续交付。</p>
+<h2 id="为什么现在-benchmark-也越来越像在测-Harness，而不是单测模型"><a href="#为什么现在-benchmark-也越来越像在测-Harness，而不是单测模型" class="headerlink" title="为什么现在 benchmark 也越来越像在测 Harness，而不是单测模型"></a>为什么现在 benchmark 也越来越像在测 Harness，而不是单测模型</h2><p>现在很多 benchmark，像 SWE-bench Verified、OSWorld、GAIA、AppWorld、WebArena、WorkArena、Terminal-Bench、HAL。把这些 benchmark 放在一起看，你会发现一个很明显的趋势：今天有区分度的测试，越来越少是“单轮答题”，越来越多是“长链路闭环”。</p>
+<p>终端里能不能稳定操作，浏览器里能不能真实完成任务，多步工作流里会不会把环境搞乱，跨工具、跨状态、跨时间窗口之后，还能不能维持方向感。比如 <code>SWE-bench Verified</code> 强调真实 issue、真实测试，天然就能暴露 retrieval、patching、validation 这些 harness 质量；<code>OSWorld</code>、<code>WebArena</code>、<code>WorkArena</code> 这种更偏 computer-use 的 benchmark，测的已经不是“会不会答”，而是“能不能在环境里稳定操作”；<code>Terminal-Bench</code> 更像是对 shell-native harness 的全面拷打；<code>HAL</code> 这类 leaderboard 甚至开始把可靠性和成本也纳入比较。</p>
+<p>这说明了一件很重要的事：行业已经默认，Agent 的竞争不再只是大脑竞赛，而是整套系统竞赛。以后你再看到某个榜单，很可能不能只问“这是什么模型跑出来的”，还得问一句：它跑在什么 harness 里？</p>
+<h2 id="开源实现也越来越多了，但越看越会发现：真正稀缺的不是框架，而是系统能力"><a href="#开源实现也越来越多了，但越看越会发现：真正稀缺的不是框架，而是系统能力" class="headerlink" title="开源实现也越来越多了，但越看越会发现：真正稀缺的不是框架，而是系统能力"></a>开源实现也越来越多了，但越看越会发现：真正稀缺的不是框架，而是系统能力</h2><p>还有一些实现和参考系统：Claude Agent SDK、Anthropic 的 multi-agent research system、SWE-agent、SWE-ReX、deepagents、Harbor、AgentKit、terminal-bench 等等。把这些项目放一起看，你会发现一个很有意思的现象：大家表面上长得不同，底层都在补同一类东西。会话和状态管理、受控执行环境、任务分解和分工、恢复能力、验证闭环、trace 和可观测性，这些东西才是真正反复出现的硬需求。</p>
+<p>Anthropic 那篇多 agent 研究系统的文章就特别典型。它讲得很清楚：multi-agent 真正有价值的地方，不是“人数多”，而是把大问题切成并行、可压缩的小问题，再由 lead agent 汇总。子 agent 的价值本质上是扩展 token 容量、隔离上下文、做信息压缩。但他们同时也强调，多 Agent 很费 token，也很容易出现协调复杂度暴涨。研究任务适合，因为可并行性高；大多数 coding task 不一定适合，因为强依赖和实时协调很多。</p>
+<p>这话就特别有含金量。因为它把很多人的误区直接打掉了：<strong>多 Agent 不是目的，能稳定交接、稳定压缩、稳定恢复，才是。</strong></p>
+<p>所以我现在越来越不迷信“某个框架”。这些开源项目看久了，你会发现真正稀缺的不是框架 API，而是你有没有把环境、状态、规则、验证、恢复这些能力接好。</p>
+<h2 id="看完这一圈文章之后，我现在对-Harness-有三个更明确的判断"><a href="#看完这一圈文章之后，我现在对-Harness-有三个更明确的判断" class="headerlink" title="看完这一圈文章之后，我现在对 Harness 有三个更明确的判断"></a>看完这一圈文章之后，我现在对 Harness 有三个更明确的判断</h2><p>第一个判断是，prompt engineering 没死，但它确实降级了。Prompt 当然还重要，但它现在更像一台机器里的一个零件，而不是那台机器本身。真正决定效果的，是 prompt 能不能接上工具、接上状态、接上规范、接上验证、接上恢复、接上评估。脱离这些单谈 prompt，有点像在研究怎么把方向盘擦得更亮。</p>
+<p>第二个判断是，未来最值钱的工程能力，不一定是“写”，而是“布置”。OpenAI 那句 <code>Humans steer. Agents execute.</code> 我觉得不是一句宣传语，它其实是在提前描述一种角色转移。以后越来越值钱的人，可能不是手写代码最快的人，而是最会做这些事的人：把问题拆成 Agent 吃得下的粒度，把经验沉淀成稳定工件，把主观口味变成可执行规则，把运行反馈暴露给 Agent 自己，给系统设计边界、恢复和回收机制。说白了，就是更会布置战场的人。</p>
+<p>第三个判断是，Harness Engineering 本质上是在把“AI 味”一点点挤出去。很多人现在一看 AI 生成的东西，就说有股“AI 味”。我现在越来越觉得，这个味道很多时候不是模型天生带的，而是 harness 太差导致的。规范不清，所以它讲空话；验收模糊，所以它自我感觉良好；上下文太脏，所以它重复、漂移、跑偏；没有反馈，所以它看起来很忙，实际没闭环。从这个意义上说，Harness Engineering 干的事非常朴素：它不是在给模型加戏，而是在不断挤掉系统里的模糊、噪音和侥幸。</p>
+<h2 id="普通人今天能怎么开始"><a href="#普通人今天能怎么开始" class="headerlink" title="普通人今天能怎么开始"></a>普通人今天能怎么开始</h2><p>说了这么多，最后还是得落回来。不然又变成一篇“看完觉得很有道理，然后什么都没改”的文章。</p>
+<p>如果你今天就想把自己的 AI 工作流往前推一步，我觉得不用学大厂那套完整系统，先做几件事就够了。先建一个短而稳的入口文件，别写百科全书，只写目录结构、构建命令、输出要求、禁止事项、去哪找详细资料；再把长期知识放回文件系统，规范、模板、参考资料、历史决策固定存放，不要每次都靠聊天记录和复制粘贴续命；再往下，就是先写验收单，再让 Agent 开始干活，不要只说“做个页面”“写篇文章”“修个 bug”，要把“怎样算做完”说清楚；然后给它看结果，不要让它盲改，能跑测试就跑测试，能截图就截图，能看日志就看日志，能回放就回放；最后，每次犯错都别只纠正一次，要想办法把它固化下来，变成 lint、清单、模板、脚本、文档、hook，让同样的错，不要下次还靠你亲自盯。</p>
+<p>这几件事做完，你的 harness 可能还很粗糙，但已经不是“纯聊天”了。</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>我现在越来越不觉得 Harness Engineering 是个营销词了。</p>
+<p>它更像是 AI 时代的软件工程，被现实逼出来的一次重新分工。</p>
+<p>以前很多东西做得差一点，也许还能靠几个老工程师硬撑住。现在主力执行者慢慢变成 Agent，这些以前模糊过去的地方，全都会被成倍放大。文档烂、边界松、日志乱、规格虚、验收空，这些东西以前只是“不够专业”，现在会直接把 Agent 用废。</p>
+<p>所以最后你会发现，Harness Engineering 讨论的根本不是“怎么更优雅地用 AI”，而是一个老问题的新版本：</p>
+<p><strong>什么样的系统，才配得上持续协作？</strong></p>
+<p>以前这是问人的。</p>
+<p>现在，也得问 Agent 了。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://openai.com/index/harness-engineering/">OpenAI：Harness engineering: leveraging Codex in an agent-first world</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents">Anthropic：Effective harnesses for long-running agents</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.anthropic.com/engineering/harness-design-long-running-apps">Anthropic：Harness design for long-running application development</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Anthropic：Effective context engineering for AI agents</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.anthropic.com/engineering/claude-code-sandboxing">Anthropic：Beyond permission prompts: making Claude Code more secure and autonomous</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.anthropic.com/engineering/writing-tools-for-agents">Anthropic：Writing effective tools for AI agents</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.anthropic.com/engineering/claude-code-best-practices">Anthropic：Claude Code: Best practices for agentic coding</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.anthropic.com/engineering/how-we-built-our-multi-agent-research-system">Anthropic：How we built our multi-agent research system</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.langchain.com/the-anatomy-of-an-agent-harness/">LangChain：The Anatomy of an Agent Harness</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.langchain.com/improving-deep-agents-with-harness-engineering/">LangChain：Improving Deep Agents with harness engineering</a></li>
+<li><a target="_blank" rel="noopener" href="https://martinfowler.com/articles/exploring-gen-ai/harness-engineering.html">Thoughtworks：Harness Engineering</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.humanlayer.dev/blog/writing-a-good-claude-md">HumanLayer：Writing a good CLAUDE.md</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.humanlayer.dev/blog/advanced-context-engineering">HumanLayer：Advanced Context Engineering for Coding Agents</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.humanlayer.dev/blog/context-efficient-backpressure">HumanLayer：Context-Efficient Backpressure for Coding Agents</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.humanlayer.dev/blog/12-factor-agents">HumanLayer：12 Factor Agents</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.humanlayer.dev/blog/skill-issue-harness-engineering-for-coding-agents">HumanLayer：Skill Issue: Harness Engineering for Coding Agents</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.inngest.com/blog/your-agent-needs-a-harness-not-a-framework">Inngest：Your Agent Needs a Harness, Not a Framework</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/github/spec-kit">GitHub：Spec Kit</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/agentsmd/agents.md">AGENTS.md</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.12factoragentops.com/">12-Factor AgentOps</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/walkinglabs/awesome-harness-engineering">awesome-harness-engineering</a></li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.zqcblog.com">DocJlm</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.zqcblog.com/posts/harness2026.html">https://www.zqcblog.com/posts/harness2026.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://www.zqcblog.com" target="_blank">破茧者~BLOG</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/AI/">AI</a><a class="post-meta__tags" href="/tags/%E7%BC%96%E7%A8%8B/">编程</a><a class="post-meta__tags" href="/tags/Agent/">Agent</a><a class="post-meta__tags" href="/tags/Harness-Engineering/">Harness Engineering</a></div><div class="post-share"><div class="social-share" data-image="/img/harness-cover.svg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/posts/agent2026.html" title="鹅厂九人谈：如何让Agent自动持续进化"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/agent-evolution-cover.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">鹅厂九人谈：如何让Agent自动持续进化</div></div><div class="info-2"><div class="info-item-1">鹅厂九人谈：如何让Agent自动持续进化“落地一个 Agent 容易，但通过一定机制自动持续优化 Agent 却很难。” —— 一位鹅厂员工的灵魂拷问  前几天读到一篇文章，收录了 9 位鹅厂员工关于「Agent 如何自动持续进化」的讨论。说实话，看完之后我在椅子上坐了好一会儿没动——这些观点里有好几个，精准地戳到了我最近在用 AI 工具时一直隐隐感觉到、但没想明白的东西。 我们这个行业现在有一个很尴尬的现状：人人都在搭 Agent，但几乎没人说得清楚怎么让 Agent 越用越聪明。首版能跑，demo 炫酷，老板点头，然后呢？上线三个月，Agent 还在犯同样的错，用户还在重复同样的纠正，每次对话都像第一次上岗的实习生——永远在同一个坑里反复踩。 这篇文章不是简单的转述。我想做的，是把这 9 位的观点展开、补充、串联起来，结合我自己使用 Claude Code 等 AI 工具的体感，尝试回答一个问题：Agent 进化到底是一套什么样的系统？  1. 先别急着优化，先学会量化第 1...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/posts/agent2026.html" title="鹅厂九人谈：如何让Agent自动持续进化"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/agent-evolution-cover.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-04</div><div class="info-item-2">鹅厂九人谈：如何让Agent自动持续进化</div></div><div class="info-2"><div class="info-item-1">鹅厂九人谈：如何让Agent自动持续进化“落地一个 Agent 容易，但通过一定机制自动持续优化 Agent 却很难。” —— 一位鹅厂员工的灵魂拷问  前几天读到一篇文章，收录了 9 位鹅厂员工关于「Agent 如何自动持续进化」的讨论。说实话，看完之后我在椅子上坐了好一会儿没动——这些观点里有好几个，精准地戳到了我最近在用 AI 工具时一直隐隐感觉到、但没想明白的东西。 我们这个行业现在有一个很尴尬的现状：人人都在搭 Agent，但几乎没人说得清楚怎么让 Agent 越用越聪明。首版能跑，demo 炫酷，老板点头，然后呢？上线三个月，Agent 还在犯同样的错，用户还在重复同样的纠正，每次对话都像第一次上岗的实习生——永远在同一个坑里反复踩。 这篇文章不是简单的转述。我想做的，是把这 9 位的观点展开、补充、串联起来，结合我自己使用 Claude Code 等 AI 工具的体感，尝试回答一个问题：Agent 进化到底是一套什么样的系统？  1. 先别急着优化，先学会量化第 1...</div></div></div></a><a class="pagination-related" href="/posts/peter2026.html" title="当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/peter-interview.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-03</div><div class="info-item-2">当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考</div></div><div class="info-2"><div class="info-item-1">当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考“I always thought I loved programming. Turns out, what I really loved was creating.”  这个男人到底什么来头前两天刷到了 Lex Fridman 播客第 491 期，嘉宾是 Peter Steinberger。说实话，如果你是做移动端开发的，PSPDFKit 这个名字你多少应该听过——十亿级别的装机量，做 PDF SDK 做到了行业天花板。这哥们花了 13 年时间把 PSPDFKit 做大，然后把公司卖了，退休了，消失了三年。 一般人到这儿故事就该结束了对吧？有钱有闲，环游世界，写写回忆录，完美收官。但 Peter 不是一般人。退休三年之后他说自己快无聊死了——“如果你每天早上醒来没有什么值得期待的事情，没有真正的挑战，那会非常非常无聊”。然后他搞了 OpenClaw，一个开源 AI Agent 项目，直接成了 GitHub 历史上增长最快的项目之一，目前251K...</div></div></div></a><a class="pagination-related" href="/posts/cc2026.html" title="程序员如何高效使用 Claude Code"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/claude-code-cover.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-03-02</div><div class="info-item-2">程序员如何高效使用 Claude Code</div></div><div class="info-2"><div class="info-item-1">程序员如何高效使用 Claude CodeClaude Code 是 Anthropic 推出的 CLI 编程助手，能直接在终端中理解你的代码仓库、执行命令、编辑文件、管理 Git——简单说，它就是一个住在你终端里的高级程序员搭档。但和所有强大工具一样，会用和用好之间隔着一道鸿沟。 本文综合了 Claude Code 创始人 Boris Cherny、Vue.js 作者尤雨溪、Google Chrome 工程负责人 Addy Osmani 等大咖的实战经验，以及 Anthropic 黑客松冠军 Affaan Mustafa 的两篇深度指南（The Shorthand Guide 和 The Longform Guide）的精华，以及社区优秀开源项目 everything-claude-code（50K+ Stars）和 awesome-claude-skills（38K+ Stars）的核心内容，帮你从”能用”进阶到”用好”。  一、理解核心约束：200K 上下文窗口在学任何技巧之前，先理解这一点：Claude Code 的 200K token...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/tlxy.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">DocJlm</div><div class="author-info-description">The Only Thing You Have to Fear Is Your Own Code</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">12</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/DocJlm"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon faa-parent animated-hover" href="https://github.com/DocJlm" target="_blank" title="Github"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-gitHub"></use></svg></a><a class="social-icon faa-parent animated-hover" href="mailto:zqc0914@gmail.com" target="_blank" title="Email"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-youxiang"></use></svg></a><a class="social-icon faa-parent animated-hover" href="/atom.xml" target="_blank" title="RSS"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-rss"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com" target="_blank" title="BiliBili"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-bilibili"></use></svg></a><a class="social-icon faa-parent animated-hover" href="https://github.com/DocJlm" target="_blank" title="QQ"><svg class="icon faa-tada" aria-hidden="true"><use xlink:href="#icon-QQ1"></use></svg></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BD%93-AI-%E7%BC%96%E7%A8%8B%E8%BF%9B%E5%85%A5%E4%B8%8B%E5%8D%8A%E5%9C%BA%EF%BC%8C%E6%8B%BC%E7%9A%84%E4%B8%8D%E6%98%AF%E6%A8%A1%E5%9E%8B%EF%BC%8C%E8%80%8C%E6%98%AF-Harness"><span class="toc-number">1.</span> <span class="toc-text">当 AI 编程进入下半场，拼的不是模型，而是 Harness</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Harness-%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.1.</span> <span class="toc-text">Harness 到底是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenAI-%E7%9C%9F%E6%AD%A3%E8%AE%B2%E6%98%8E%E7%99%BD%E7%9A%84%EF%BC%8C%E4%B8%8D%E6%98%AF%E2%80%9CAI-%E5%86%99%E4%BA%86%E4%B8%80%E7%99%BE%E4%B8%87%E8%A1%8C%E4%BB%A3%E7%A0%81%E2%80%9D%EF%BC%8C%E8%80%8C%E6%98%AF%E2%80%9C%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%BC%80%E5%A7%8B%E4%B8%8D%E7%9B%B4%E6%8E%A5%E5%86%99%E4%BB%A3%E7%A0%81%E4%BA%86%E2%80%9D"><span class="toc-number">1.2.</span> <span class="toc-text">OpenAI 真正讲明白的，不是“AI 写了一百万行代码”，而是“工程师开始不直接写代码了”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Anthropic-%E8%AE%B2%E5%BE%97%E6%9B%B4%E7%8E%B0%E5%AE%9E%EF%BC%9A%E9%95%BF%E4%BB%BB%E5%8A%A1%E7%9C%9F%E6%AD%A3%E7%9A%84%E6%95%8C%E4%BA%BA%EF%BC%8C%E4%B8%8D%E6%98%AF%E7%AC%A8%EF%BC%8C%E8%80%8C%E6%98%AF%E5%A4%B1%E5%BF%86%E5%92%8C%E8%87%AA%E6%88%91%E6%84%9F%E8%A7%89%E8%89%AF%E5%A5%BD"><span class="toc-number">1.3.</span> <span class="toc-text">Anthropic 讲得更现实：长任务真正的敌人，不是笨，而是失忆和自我感觉良好</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HumanLayer-%E8%BF%99%E6%89%B9%E6%96%87%E7%AB%A0%E6%9C%80%E5%80%BC%E9%92%B1%E7%9A%84%E5%9C%B0%E6%96%B9%EF%BC%8C%E6%98%AF%E6%8A%8A%E5%BE%88%E5%A4%9A%E7%BB%86%E6%B4%BB%E8%AE%B2%E9%80%8F%E4%BA%86"><span class="toc-number">1.4.</span> <span class="toc-text">HumanLayer 这批文章最值钱的地方，是把很多细活讲透了</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Thoughtworks%E3%80%81Inngest-%E8%BF%99%E4%BA%9B%E6%96%87%E7%AB%A0%E6%8A%8A%E5%8F%A6%E5%A4%96%E5%8D%8A%E8%BE%B9%E8%A1%A5%E4%B8%8A%E4%BA%86%EF%BC%9A%E5%88%AB%E8%BF%B7%E4%BF%A1%E6%A1%86%E6%9E%B6%EF%BC%8C%E8%A6%81%E9%87%8D%E8%A7%86%E7%B3%BB%E7%BB%9F%E7%BA%AA%E5%BE%8B"><span class="toc-number">1.5.</span> <span class="toc-text">Thoughtworks、Inngest 这些文章把另外半边补上了：别迷信框架，要重视系统纪律</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%88%E5%A4%9A%E4%BA%BA%E7%8E%B0%E5%9C%A8%E6%9C%80%E7%BC%BA%E7%9A%84%EF%BC%8C%E4%B8%8D%E6%98%AF%E6%9B%B4%E5%A4%9A-Agent%EF%BC%8C%E8%80%8C%E6%98%AF%E6%9B%B4%E5%83%8F%E6%A0%B7%E7%9A%84%E8%A7%84%E6%A0%BC%E3%80%81%E8%AF%84%E4%BC%B0%E5%92%8C%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7"><span class="toc-number">1.6.</span> <span class="toc-text">很多人现在最缺的，不是更多 Agent，而是更像样的规格、评估和可观测性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E7%8E%B0%E5%9C%A8-benchmark-%E4%B9%9F%E8%B6%8A%E6%9D%A5%E8%B6%8A%E5%83%8F%E5%9C%A8%E6%B5%8B-Harness%EF%BC%8C%E8%80%8C%E4%B8%8D%E6%98%AF%E5%8D%95%E6%B5%8B%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.7.</span> <span class="toc-text">为什么现在 benchmark 也越来越像在测 Harness，而不是单测模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E6%BA%90%E5%AE%9E%E7%8E%B0%E4%B9%9F%E8%B6%8A%E6%9D%A5%E8%B6%8A%E5%A4%9A%E4%BA%86%EF%BC%8C%E4%BD%86%E8%B6%8A%E7%9C%8B%E8%B6%8A%E4%BC%9A%E5%8F%91%E7%8E%B0%EF%BC%9A%E7%9C%9F%E6%AD%A3%E7%A8%80%E7%BC%BA%E7%9A%84%E4%B8%8D%E6%98%AF%E6%A1%86%E6%9E%B6%EF%BC%8C%E8%80%8C%E6%98%AF%E7%B3%BB%E7%BB%9F%E8%83%BD%E5%8A%9B"><span class="toc-number">1.8.</span> <span class="toc-text">开源实现也越来越多了，但越看越会发现：真正稀缺的不是框架，而是系统能力</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9C%8B%E5%AE%8C%E8%BF%99%E4%B8%80%E5%9C%88%E6%96%87%E7%AB%A0%E4%B9%8B%E5%90%8E%EF%BC%8C%E6%88%91%E7%8E%B0%E5%9C%A8%E5%AF%B9-Harness-%E6%9C%89%E4%B8%89%E4%B8%AA%E6%9B%B4%E6%98%8E%E7%A1%AE%E7%9A%84%E5%88%A4%E6%96%AD"><span class="toc-number">1.9.</span> <span class="toc-text">看完这一圈文章之后，我现在对 Harness 有三个更明确的判断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E4%BA%BA%E4%BB%8A%E5%A4%A9%E8%83%BD%E6%80%8E%E4%B9%88%E5%BC%80%E5%A7%8B"><span class="toc-number">1.10.</span> <span class="toc-text">普通人今天能怎么开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="toc-number">1.11.</span> <span class="toc-text">写在最后</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">1.12.</span> <span class="toc-text">参考资料</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/harness2026.html" title="当 AI 编程进入下半场，拼的不是模型，而是 Harness"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/harness-cover.svg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="当 AI 编程进入下半场，拼的不是模型，而是 Harness"/></a><div class="content"><a class="title" href="/posts/harness2026.html" title="当 AI 编程进入下半场，拼的不是模型，而是 Harness">当 AI 编程进入下半场，拼的不是模型，而是 Harness</a><time datetime="2026-03-29T15:30:00.000Z" title="发表于 2026-03-29 23:30:00">2026-03-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/agent2026.html" title="鹅厂九人谈：如何让Agent自动持续进化"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/agent-evolution-cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="鹅厂九人谈：如何让Agent自动持续进化"/></a><div class="content"><a class="title" href="/posts/agent2026.html" title="鹅厂九人谈：如何让Agent自动持续进化">鹅厂九人谈：如何让Agent自动持续进化</a><time datetime="2026-03-04T06:00:00.000Z" title="发表于 2026-03-04 14:00:00">2026-03-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/peter2026.html" title="当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/peter-interview.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考"/></a><div class="content"><a class="title" href="/posts/peter2026.html" title="当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考">当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考</a><time datetime="2026-03-03T02:00:00.000Z" title="发表于 2026-03-03 10:00:00">2026-03-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/cc2026.html" title="程序员如何高效使用 Claude Code"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/claude-code-cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="程序员如何高效使用 Claude Code"/></a><div class="content"><a class="title" href="/posts/cc2026.html" title="程序员如何高效使用 Claude Code">程序员如何高效使用 Claude Code</a><time datetime="2026-03-02T04:00:00.000Z" title="发表于 2026-03-02 12:00:00">2026-03-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/428b39ea.html" title="KMP详解"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/KMP.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="KMP详解"/></a><div class="content"><a class="title" href="/posts/428b39ea.html" title="KMP详解">KMP详解</a><time datetime="2025-09-14T02:52:41.000Z" title="发表于 2025-09-14 10:52:41">2025-09-14</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 - 2026 By DocJlm</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><div class="aplayer no-destroy" data-id="13771892874" data-server="netease" data-type="playlist"   data-order="list" data-fixed="true" data-preload="auto" data-autoplay="false" data-mutex="true" ></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      const usePjax = true
+      true 
+        ? (usePjax ? pjax.loadUrl('/404.html') : window.location.href = '/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})()</script><div class="app-refresh" id="app-refresh" style="position: fixed;top: -2.2rem;left: 0;right: 0;z-index: 99999;padding: 0 1rem;font-size: 15px;height: 2.2rem;transition: all 0.3s ease;"><div class="app-refresh-wrap" style=" display: flex;color: #fff;height: 100%;align-items: center;justify-content: center;"><label>✨ 有新文章啦！ 👉</label><a href="javascript:void(0)" onclick="location.reload()"><span style="color: #fff;text-decoration: underline;cursor: pointer;">🍗点击食用🍔</span></a></div></div><script>if ('serviceWorker' in navigator) {
+if (navigator.serviceWorker.controller) {
+navigator.serviceWorker.addEventListener('controllerchange', function() {
+showNotification()
+})
+}
+window.addEventListener('load', function() {
+navigator.serviceWorker.register('/sw.js')
+})
+}
+function showNotification() {
+if (GLOBAL_CONFIG.Snackbar) {
+var snackbarBg =
+document.documentElement.getAttribute('data-theme') === 'light' ?
+GLOBAL_CONFIG.Snackbar.bgLight :
+GLOBAL_CONFIG.Snackbar.bgDark
+var snackbarPos = GLOBAL_CONFIG.Snackbar.position
+Snackbar.show({
+text: '✨ 有新文章啦！ 👉',
+backgroundColor: snackbarBg,
+duration: 500000,
+pos: snackbarPos,
+actionText: '🍗点击食用🍔',
+actionTextColor: '#fff',
+onActionClick: function(e) {
+location.reload()
+},
+})
+} else {
+var showBg =
+document.documentElement.getAttribute('data-theme') === 'light' ?
+'#3b70fc' :
+'#1f1f1f'
+var cssText = `top: 0; background: ${showBg};`
+document.getElementById('app-refresh').style.cssText = cssText
+}
+}</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start -->
+  <script data-pjax src="/js/hexo_githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://github-calendar-api.meta-code.top/api?user=DocJlm";
+            var git_color =['#ebedf0', '#a2f7af', '#6ce480', '#54ad63', '#469252', '#31753c', '#1f5f2a', '#13531f', '#084111', '#032b09', '#000000'];
+            var git_user ="DocJlm";
+            var parent_div_git = document.getElementById('recent-posts');
+            var git_div_html = '<div class="recent-post-item" style="width:100%;height:auto;padding:10px;"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/'){
+                console.log("已挂载hexo-github-calendar https://github.com/Barry-Flynn/hexo-github-calendar");
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementById('recent-posts')){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:280px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style></style><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v5.4.0" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" data-title="主题版本Butterfly_v4.2.2" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" data-title="本站使用JsDelivr为静态资源提供CDN加速" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title=""><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></p>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/runtime/runtime.min.js"></script><script async src="/js/ali_font.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '30');
+    arr[i].setAttribute('data-wow-iteration', '1');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '200ms');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('flink-list-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('article-sort-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__slideInRight');
+    arr[i].setAttribute('data-wow-duration', '1.5s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__flipInY');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script><script async="async">var arr = document.getElementsByClassName('site-card');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__animated');
+    arr[i].setAttribute('data-wow-duration', '3s');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="https://cdn.jsdelivr.net/npm/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/hexo-butterfly-wowjs/lib/wow_init.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item swiper_container_card" style="height: auto;width: 100%"><div id="random"><div id="random-banner"><canvas id="peoplecanvas"></canvas></div><a id="random-hover" style="width:100%;height:auto;" href="javascript:toRandomPost()" rel="external nofollow noreferrer" one-link-mark="yes"><i class="fa fa-paper-plane" style="margin-left:10px"></i><div style="margin-left:10px">随便逛逛<i class="fa-solid fa-arrow-right" style="margin-left:10px"></i></div></a></div><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/af5d4fac.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/smhfx.jpg" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2025-05-31</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/af5d4fac.html&quot;);" href="javascript:void(0);" alt="">碎梦后繁星</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/af5d4fac.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/harness2026.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/harness-cover.svg" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2026-03-29</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/harness2026.html&quot;);" href="javascript:void(0);" alt="">当 AI 编程进入下半场，拼的不是模型，而是 Harness</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/harness2026.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/agent2026.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/agent-evolution-cover.png" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2026-03-04</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/agent2026.html&quot;);" href="javascript:void(0);" alt="">鹅厂九人谈：如何让Agent自动持续进化</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/agent2026.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/peter2026.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/peter-interview.jpg" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2026-03-03</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/peter2026.html&quot;);" href="javascript:void(0);" alt="">当程序员不再写代码——看完 Peter Steinberger 采访后的技术思考</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/peter2026.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/428b39ea.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/KMP.webp" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2025-09-14</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/428b39ea.html&quot;);" href="javascript:void(0);" alt="">KMP详解</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/428b39ea.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/956e041d.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/lkq.jpg" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2025-06-27</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/956e041d.html&quot;);" href="javascript:void(0);" alt="">李克勤院士</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/956e041d.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" onclick="pjax.loadUrl(&quot;posts/cc2026.html&quot;);" href="javascript:void(0);" alt=""><img width="48" height="48" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/claude-code-cover.png" alt="" onerror="this.src=https://cdn.cbd.int/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2026-03-02</span><a class="blog-slider__title" onclick="pjax.loadUrl(&quot;posts/cc2026.html&quot;);" href="javascript:void(0);" alt="">程序员如何高效使用 Claude Code</a><div class="blog-slider__text">再怎么看我也不知道怎么描述它的啦！</div><a class="blog-slider__button" onclick="pjax.loadUrl(&quot;posts/cc2026.html&quot;);" href="javascript:void(0);" alt="">详情       </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://cdn.jsdelivr.net/npm/anzhiyu-blog@1.1.6/js/swiper.min.js"></script><script defer data-pjax src="https://cdn.jsdelivr.net/npm/hexo-butterfly-swiper-anzhiyu@1.0.4/lib/swiper_init.js"></script><script data-pjax src="https://cdn.jsdelivr.net/npm/gsap@3.9.1/dist/gsap.min.js"></script><script defer src="/js/people.min.js"></script><script async src="/anzhiyu/random.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body></html>
